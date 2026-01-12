@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+    <header>
+        <resultCode>00</resultCode>
+        <resultMsg>NORMAL SERVICE.</resultMsg>
+    </header>
+    <body>
+        <items>
+            <item>
+                <dutyAddr>서울특별시 강남구 남부순환로 2649, 베드로병원 (도곡동)</dutyAddr>
+                <dutyEmcls>G009</dutyEmcls>
+                <dutyEmclsName>응급실운영신고기관</dutyEmclsName>
+                <dutyName>강남베드로병원</dutyName>
+                <dutyTel1>1544-7522</dutyTel1>
+                <dutyTel3>1544-7522</dutyTel3>
+                <hpid>A1100141</hpid>
+                <phpid>A1100141</phpid>
+                <rnum>1</rnum>
+                <wgs84Lat>37.485612179925724</wgs84Lat>
+                <wgs84Lon>127.0395873429168</wgs84Lon>
+            </item>
+            <item>
+                <dutyAddr>서울특별시 강남구 선릉로 404, 더드림병원 (대치동)</dutyAddr>
+                <dutyEmcls>G009</dutyEmcls>
+                <dutyEmclsName>응급실운영신고기관</dutyEmclsName>
+                <dutyName>더드림병원</dutyName>
+                <dutyTel1>02-1661-1177</dutyTel1>
+                <dutyTel3>1661-1177</dutyTel3>
+                <hpid>A1123234</hpid>
+                <phpid>A1123234</phpid>
+                <rnum>2</rnum>
+                <wgs84Lat>37.5009902618151</wgs84Lat>
+                <wgs84Lon>127.050967336445</wgs84Lon>
+            </item>
+            <item>
+                <dutyAddr>서울특별시 강남구 일원로 81 (일원동, 삼성의료원)</dutyAddr>
+                <dutyEmcls>G006</dutyEmcls>
+                <dutyEmclsName>지역응급의료센터</dutyEmclsName>
+                <dutyName>삼성서울병원</dutyName>
+                <dutyTel1>02-3410-2114</dutyTel1>
+                <dutyTel3>02-3410-2060</dutyTel3>
+                <hpid>A1100010</hpid>
+                <phpid>A1100010</phpid>
+                <rnum>3</rnum>
+                <wgs84Lat>37.48851613490445</wgs84Lat>
+                <wgs84Lon>127.08668245340024</wgs84Lon>
+            </item>
+            <item>
+                <dutyAddr>서울특별시 강남구 언주로 211, 강남세브란스병원 (도곡동)</dutyAddr>
+                <dutyEmcls>G006</dutyEmcls>
+                <dutyEmclsName>지역응급의료센터</dutyEmclsName>
+                <dutyName>연세대학교의과대학강남세브란스병원</dutyName>
+                <dutyTel1>02-2019-3114</dutyTel1>
+                <dutyTel3>02-2019-3333</dutyTel3>
+                <hpid>A1100015</hpid>
+                <phpid>A1100015</phpid>
+                <rnum>4</rnum>
+                <wgs84Lat>37.492806984645476</wgs84Lat>
+                <wgs84Lon>127.04631254186797</wgs84Lon>
+            </item>
+            <item>
+                <dutyAddr>서울특별시 강남구 논현로 566, 강남차병원(역삼동650-9, 606-4, 605외2필지(지하7층~지하1층, 지상2층~7층))
+                    (역삼동)</dutyAddr>
+                <dutyEmcls>G009</dutyEmcls>
+                <dutyEmclsName>응급실운영신고기관</dutyEmclsName>
+                <dutyName>차의과학대학교강남차병원</dutyName>
+                <dutyTel1>02-3468-3000</dutyTel1>
+                <dutyTel3>02-3468-3060</dutyTel3>
+                <hpid>A1100057</hpid>
+                <phpid>A1100057</phpid>
+                <rnum>5</rnum>
+                <wgs84Lat>37.506800025850865</wgs84Lat>
+                <wgs84Lon>127.03466865188072</wgs84Lon>
+            </item>
+        </items>
+        <numOfRows>30</numOfRows>
+        <pageNo>1</pageNo>
+        <totalCount>5</totalCount>
+    </body>
+</response>

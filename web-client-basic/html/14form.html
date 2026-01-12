@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 입력 요소</title>
+</head>
+<body>
+    <form method="post" action="processor">
+            <!-- get방식 : 주소?name=value1&name=value2&... -->
+            <!-- post방식 : 메시지 본문에 포함 -->
+        <table border="1" align="center">
+            <caption>회원가입정보</caption>
+            <colgroup>
+                <col style="background-color: aliceblue;">
+                <col>
+            </colgroup>
+            <tr style="height: 30px;">
+                <th style="width: 150px">아이디</th>
+                <td style="width: 300px;"><input type="text" name="id"></td>
+            </tr>
+            <tr style="height: 30px;">
+                <th>패스워드</th>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td>
+                    <!-- <input type="email" name="email"> -->
+                     <input type="text" name="email_id">
+                     @
+                     <select name="email_domain">
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="kakao.com">kakao.com</option>
+                     </select>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <th>성별</th>
+                <td>
+                    <input type="radio" name="gender" value="male">남
+                    <input type="radio" name="gender" value="feale">여
+                <!-- name 이 같은 radio는 배타적으로 선택-->
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <th>관심주제</th>
+                <td>
+                    <input type="checkbox" name="interest" value="movie">영화    
+                    <input type="checkbox" name="interest" value="music">음악
+                    <input type="checkbox" name="interest" value="game">게임
+                    <input type="checkbox" name="interest" value="sports">운동
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <th>프로필사진</th>
+                <td>
+                    <input type="file" name="picture" accept="image/*">    
+                </td>
+            </tr>
+            <tr>
+                <th>가입인사</th>
+                <td>
+                    <textarea name="greetings" cols="50" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="가입">
+                    <input type="reset" value="다시입력">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br><br><br>
+    <hr>
+    <div style="background-color: antiquewhite;width: 40%; margin: 0 auto;">
+        <form action="">
+            <!-- hidden: 보이지 않지만 데이터 전송에 참여 -->
+            <input type="hidden" name="code" value="1234567">
+            <fieldset>
+                    <legend>입력요소그룹</legend>
+                    <label>1111111 <input type="text"></label>
+                    <br>
+                    <label for="input2">2222222</label>
+                    <input type="text" id="input2">
+            </fieldset>
+            <fieldset>
+                <legend>입력요소그룹2</legend>
+                    <input type="date">
+                    <br>
+                    <input type="range" min="0" max="100" step="10">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

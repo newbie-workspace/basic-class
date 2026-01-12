@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>테이블 표시</title>
+</head>
+<body>
+    <table border="1" style="width: 100%;height: 400px;margin: 0 auto;">
+        <!-- margin : 요소와 요소, padding : 요소와 데이터 -->
+        <!-- 위에서 margin: 0 auto;  상하는 0 좌우 똑같이 --> 
+        <thead>
+        <tr>
+            <th>1-1</th>
+            <th>1-2</th>
+            <th>1-3</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="2">2-1</td>
+            
+            <td>2-3</td>
+        </tr>
+        <tr>
+            <td>3-1</td>
+            <td>3-2</td>
+            <td rowspan="2">3-3</td>
+        </tr>
+        <tr>
+            <td>4-1</td>
+            <td>4-2</td>
+            
+        </tr>
+        </tbody>
+        <!-- tr: table row, td: table data, th: table head -->
+    </table>   
+
+</body>
+</html>

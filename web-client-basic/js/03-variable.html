@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>변수와 자료형</title>
+</head>
+<body>
+
+<script>
+   let name = "이무기";
+   name = 12345; // 저장된 데이터에 따라 자료형이 새로 결정된다.
+   console.log(name + 10 + '00000');
+   let age; // undefined
+   console.log(age);
+   age = 30;
+   console.log(age);
+   const PI = 3.14;
+  // PI = 3.15; -> 오류 : const 는 값 변경할 수 없음.
+   var oldStyle = "예전에 사용하던 변수.";
+   
+   let v1 = 10;
+   console.log(typeof v1);
+   let v2 = "hello";
+   console.log(typeof v2);
+   let v3 = true;
+   console.log(typeof v3);
+   
+</script>
+</body>
+</html>

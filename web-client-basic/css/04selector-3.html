@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>선택자3</title>
+    <style>
+        div {
+            color:cornflowerblue; 
+            font-size: 15pt;
+        }
+        #top_div > div { /* child */
+            color:darkseagreen 
+        }
+        #top_div div { /* descendant */
+            font-size: 30pt;
+        }
+        #first_mid_div + div { /* next to */
+            font-weight: bolder;
+        }
+        #first_mid_div ~ div { /* following */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="top_div">
+        TOP CONTENT
+        <div id="first_mid_div">
+            MID1 CONTENT
+            <div>BOTTOM CONTENT</div>
+        </div>
+        <div>MID2 CONTENT</div>
+        <div>MID3 CONTENT</div>
+    </div>
+</body>
+</html>

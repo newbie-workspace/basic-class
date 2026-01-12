@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        const person = {
+            name: "Jeanette Voerman",
+            email: "janus2@vtm.com",
+            phone: "211-2323-2424"
+        };
+        // const person2 = person;
+        // person2.gender = "F"
+        // console.log(person2);
+        const person2 = {...person, gender:"F"}; // {...person} -> {name: "", email: "", phone: ""}
+        console.log(person2);
+    </script>
+    
+</body>
+</html>

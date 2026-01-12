@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요소 추가 제거</title>
+</head>
+<body>
+
+    <button id="btn-add">요소 추가</button>
+    <button id="btn-remove">요소 제거</button>
+    <hr>
+    <div id="container"></div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", event => {
+
+            const container = document.querySelector("#container");
+            const btnAdd = document.querySelector("#btn-add");
+            const btnRemove = document.querySelector("#btn-remove");
+
+            btnAdd.addEventListener("click", event => {
+
+                const div = document.createElement('div');
+                div.innerHTML = new Date()
+                div.style.border = "solid 1px red";
+                div.style.margin = "5px";
+                div.style.padding = '5px';
+                container.appendChild(div);
+
+            });
+
+            btnRemove.addEventListener("click", event => {
+
+                const div = document.querySelector("#container div:last-child");
+                if (div) {
+                    div.remove();
+                }
+                
+            });
+            
+        });
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoJson 연습</title>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <style>
+        #map {
+            height: 800px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map" ></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+
+        // 배경 지도 표시
+        const map = L.map('map').setView([36.5, 127.8], 7);
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+            {maxZoom: 18}
+        ).addTo(map);
+
+        // 지도 위에 영역 표시
+        const GEOJSON_URL ="data-files/korea-sido-geo.json";
+        fetch(GEOJSON_URL)
+        .then(res => res.json())
+        .then(geojson => {
+            L.geoJSON(geojson, {
+                style: {
+                    color: "#ff0000",
+                    weight: 2,
+                    fillOpacity: 0.1
+                },
+                onEachFeature: function(f, layer) {
+                    //layer.bindPopup(f.properties.CTP_KOR_NM); // 시/도 name
+                    layer.bindPopup(
+                        `<div>
+                        <strong>${f.properties.CTP_KOR_NM}</strong><br><br>
+                        <button onclick='alert("${f.properties.CTPRVN_CD}")'>
+                        정보 보기
+                        </button>
+                        </div>`
+                    );
+                }
+            }).addTo(map);
+        });
+    </script>
+</body>
+</html>

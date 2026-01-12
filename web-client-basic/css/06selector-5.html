@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>선택자5</title>
+    <style>
+        .navi li {
+            float: left; /* block 이 inline 으로 바뀜 */
+            width: 150px;
+            padding: 10px;
+        }
+        .navi a:link, .navi a:visited {
+            display: block;
+            font-size: 14px;
+            color: black;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .navi a:hover, .navi a:focus {
+            background-color: aquamarine;
+            color:red;
+        }
+        .navi a:active {
+            background-color:darkred;
+            color:blue;
+        }
+        ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navi">
+        <ul>
+            <li><a href="#">이용 안내</a></li>
+            <li><a href="#">객실 소개</a></li>
+            <li><a href="#">에약 방법 및 요금</a></li>
+            <li><a href="#">예약하기</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

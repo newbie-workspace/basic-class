@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 사용</title>
+</head>
+<body>
+    
+    <div id="message"></div>
+
+    <!-- <script src="js/jquery-3.7.1.js"></script> // 직접 다운로드 -->    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.js"></script> <!-- cdn (content delivery network) -->
+
+    <script>
+        // 바닐라 스크립트
+        // const message = document.querySelector("#message");
+        // message.innerHTML = `<h3>${new Date()}</h3>`;
+
+        // 제이쿼리
+        const message = $("#message"); //실제 Dom 개체가 아님. jQuery 객체임.
+        message.html(`<h3>${new Date()}</h3>`);
+
+    
+    </script>
+    
+</body>
+</html>

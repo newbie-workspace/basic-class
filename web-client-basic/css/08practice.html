@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>연습</title>
+    <style>
+        table {
+            margin: 0 auto;
+        }
+        legend {
+            text-align: center;
+        }
+        #pictures table {
+            border-style: groove;
+            padding: 15px
+        }
+        td {
+            width:40%;
+            text-align: center;
+            border-bottom-style: double;
+        }
+        #pictures td {
+            height: 150px;
+            font-size: large;
+            color:coral
+        }
+        img {
+            width: 165px;
+        }
+        div img:hover{
+            border-style: dotted;
+            border-color: crimson;
+            border-width: 10px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div id="loginfield">
+        <form method="post" action="someplace">
+            <fieldset>
+                <legend>Log-In</legend>
+            <table border="1">
+                <tr>
+                    <th>아이디</th>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td><input type="password" name="pass"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="로그인"></td>
+                </tr>
+            </table>
+            </fieldset>
+        </form>
+    </div>
+    <br><br>
+    <div id="pictures">
+        <table>
+            <tr>
+                <td><a href=""><img src="/html/images/800.jpg" alt=""></a></td>
+                <td>Hollywood Map</td>
+            </tr>
+            <tr>
+                <td><a href=""><img src="/html/images/1000.jpg" alt=""></a></td>
+                <td>Venture Tower</td>
+            </tr>
+            <tr>
+                <td><a href=""><img src="/html/images/cover.jpg" alt=""></a></td>
+                <td>VTMB cover</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

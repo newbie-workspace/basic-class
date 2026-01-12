@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 적용</title>
+    <!-- 2. script tag 사용 -->
+    <script>
+        alert('인터넷이 안돼')
+        document.write("<h2>javascript !!!</h2>")
+    </script>
+</head>
+<body>
+    <!-- 1. html 요소 내부에 자바스크립트 코드 삽입. -->
+    <button onclick="alert('감사합니다');">누르기</button>
+    <br><br><br>   
+    <!-- 3. 외부 파일에 작성된 자바스크립트. 주로 스크립트 중 제일 위에 -->
+    <script src="myscript.js"></script>
+    
+    <!-- 스크립트 태그는 어디든 들어갈 수 있...권장사항은 /body 바로 위에 -->
+    <script>
+        alert('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
+        alert(1+2+3+4+5+6);
+    </script>
+    <!-- javascript runs on a single thread  -->
+
+
+</body>
+</html>

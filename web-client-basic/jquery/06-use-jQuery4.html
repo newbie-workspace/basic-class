@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로또 당첨 예상 번호 뽑기</title>
+    <style>
+        table { margin: 0 auto; }
+        td { 
+            width: 70px; 
+            height: 70px; 
+            border: solid 1px black;
+            font-size: 15pt; 
+            font-weight: bold; 
+            text-align: center; 
+        }
+        button { width: 100%; height: 100%; font-size: 15pt; font-weight: bold; color: red; }
+    </style>
+</head>
+<body>
+    <br><br><br>
+    <table>
+        <tr>
+            <td colspan="6">
+                <button id="btn-select-number">당첨 예상 번호 뽑기</button>
+            </td>
+        </tr>
+        <tr id="numbers-row">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script src="js/jquery-3.7.1.js"></script>
+    
+    <script>
+
+        $( ()=>{ 
+            
+            $("#btn-select-number").on("click", event => {
+                
+                const numbers = [];
+                
+                for (let i = 0; i < 6; i++) {
+                    const number = Math.floor(Math.random() * 45 + 1);
+                    numbers.push(number);                 
+                }
+                
+                numbers.sort((v1, v2) => v1 -v2);        
+                
+                $("#numbers-row td").each((idx, td) => { // jQuery의 each 함수는 js의 forEach와 같은 기능.
+                    $(td).html(numbers[idx]);
+                });
+
+            }); 
+
+        });
+
+        
+        // $(()=>{ 
+
+        //     $("#btn-select-number").on("click", event => {
+
+        //         $("#numbers-row td").each((idx, td) => {
+
+        //             $(td).html(`${Math.floor(Math.random() * 45 + 1)}`);
+
+        //         });
+
+        //     }); 
+
+        // });
+
+       
+
+        
+        
+        
+        
+       
+
+    </script>
+</body>
+</html>

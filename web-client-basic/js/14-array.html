@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    
+    <meta charset="UTF-8">
+    
+    <title>배열</title>
+    
+    <style>
+
+    </style>
+    
+</head>
+
+<body>
+    
+    <script>
+  
+        const ar1 = [1, 2, 3, 4, 5];
+        
+            for (let i = 0; i < ar1.length; i++) {
+
+                document.write(`[${ar1[i]}]`);
+
+            }
+        
+        document.write("<hr>");
+        
+        const ar2 = new Array(10);
+
+            for (let i = 0; i < ar2.length; i++) {
+            
+                ar2[i] = Math.floor(Math.random()*900 + 100);
+            
+            }
+
+            for (let i = 0; i < ar2.length; i++) {
+            
+                document.write(`[${ar2[i]}]`);
+            
+            }
+
+    </script>
+
+</body>
+
+</html>

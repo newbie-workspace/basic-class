@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>선택자6</title>
+    <style>
+        .container :first-child {
+            background-color: indianred;
+        }
+        .container :last-child {
+            background-color: aqua;
+        }
+        .container div:only-child {
+            background-color: bisque;
+        }
+        table {
+            width: 500px;margin: 0 auto;
+        }
+        tr {
+            height: 35px;
+        }
+        tr:nth-child(2n+1) {
+            background-color: dodgerblue;
+        }
+        img {
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>first</p>
+        <div>second</div>
+        <p>third</p>
+        <div>fourth</div>
+    </div>
+    <div class="container">
+        <div>alone</div>
+    </div>
+
+    <hr>
+    <table border="1">
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+    </table><br><br><br>
+    <img src="/html/images/800.jpg" width="400" alt="">
+</body>
+</html>

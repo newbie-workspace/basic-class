@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <title>이미지 갤러리</title>
+    
+    <style>
+        * {
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            border: solid 1px;
+        }
+        tr td img {
+            width: 100px;
+        }
+        #below {
+            border: solid 1px;
+        }
+        #below img {
+            width: 400px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    
+    <table id="images-table">
+        <tr>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+            <td><img src="" alt=""></td>
+        </tr>
+    </table>
+
+    <div id="below">
+        <table>
+            <tr>
+                <td><img src="" alt=""></td>
+            </tr>
+            <tr>
+                <td>
+                <button id="btn-auto">자동보기</button>
+                <button id="btn-stop">중지</button>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    
+    <script>
+
+        const imgs = document.querySelectorAll("#images-table img");
+        const imgBelow = document.querySelector("#below img");
+
+        for (let i = 0; i < imgs.length; i++) {
+
+            imgs[i].src = `images2/${i}.jpg`;
+
+        }
+
+        function insertPic(event) { 
+            
+            const img = event.target;
+            imgBelow.src = img.src;
+            imgs[currentPosition].style.border = ""; 
+
+            for (let i = 0; i < imgs.length; i++) {
+                    
+                if (imgs[i].src == img.src) { 
+                    
+                        currentPosition = i;
+
+                        break;
+
+                }
+            
+            }
+                
+            imgs[currentPosition].style.border = "solid 2px blue"; 
+        }
+
+        for (let i = 0; i < imgs.length; i++ ) {
+
+            imgs[i].addEventListener("click", insertPic);
+
+        }
+
+        let currentPosition = 0;
+        
+        imgBelow.src = imgs[currentPosition].src;
+        imgs[currentPosition].style.border = "solid 2px blue"; 
+
+        const btnAuto = document.querySelector("#btn-auto");
+        const btnStop = document.querySelector("#btn-stop");
+
+        function moveNext() {
+            
+            imgs[currentPosition].style.border = ""; 
+            currentPosition++;
+            
+                if (currentPosition > imgs.length - 1) {
+                
+                    currentPosition = 0;
+                
+                }
+
+            imgBelow.src = `images2/${currentPosition}.jpg`; 
+            imgs[currentPosition].style.border = "solid 2px blue"; 
+            
+        }   
+
+        let timerId = null;
+
+        btnAuto.addEventListener("click", event =>
+            
+            {    
+             
+                if(timerId) {         // false : false , 0 , "" , null , []
+                    return;
+                }
+
+                timerId = setInterval(moveNext, 1000); //moveNext 는 변수... -> moveNext() 라고 넣으면 실행 안 됨
+
+            }    
+
+        );
+
+        btnStop.addEventListener("click", event =>
+
+            {
+                clearInterval(timerId);
+                timerId = null;
+            }
+
+        );
+        
+    </script>
+
+</body>
+
+</html>

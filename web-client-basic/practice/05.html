@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><h1>test</h1></div>
+    <script>
+        let r = Math.random() * 256;
+        let g = Math.random() * 256;
+        let b = Math.random() * 256;
+        r = Math.floor(r);
+        g = Math.floor(g);
+        b = Math.floor(b);
+        console.log(r, g, b);
+        const divArea = document.querySelector("div");
+        divArea.style.textAlign = "center";
+        // divArea.style.backgroundColor = "rgb("  + r +  ","   + g +   ","   + b +    ")";
+        divArea.style.backgroundColor = `rgb(${r},${g},${b})`;  // ` : backquote, backtick, grave accent
+        divArea.style.width = "300px";
+        divArea.style.height = "300px";
+        divArea.style.margin = "200px auto";
+    </script>
+</body>
+</html>

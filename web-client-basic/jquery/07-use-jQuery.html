@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요소 만들기</title>
+    <style>
+
+        * {
+            
+            text-align: center;
+            
+        }
+
+        table {
+
+            margin: 200px auto;
+            border: solid 1px
+
+        }
+
+        td {
+            
+            width: 70px;
+            height: 70px;
+            color:crimson;
+            font-weight: bolder;
+            font-size: 15pt;
+            border: solid 2px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+       
+       $( () => {
+             
+            const table = $("<table></table>");
+            
+                const tr1 = $("<tr></tr>");
+                
+                    const td = $("<td></td>").attr("colspan", 6);
+                    
+                        const button = $("<button></button>").attr('id', 'btn-select-number').html("당첨 번호 뽑기");
+                
+                const tr2 = $('<tr id="numbers-row"></tr>');                
+                
+                    for(let i = 0; i < 6; i++) {
+                        const td = $("<td></td>");
+                        tr2.append(td);    
+                    }
+
+                // append : 자식을 추가.
+                // button.appendTo(td); // 자식을 부모에 추가
+                $("body").append(table);
+                table.append(tr1);
+                table.append(tr2);
+                tr1.append(td)
+                td.append(button); 
+
+            $("#btn-select-number").on("click", event => {
+                
+                const numbers = [];
+                
+                for (let i = 0; i < 6; i++) {
+                    const number = Math.floor(Math.random() * 45 + 1);
+                    numbers.push(number);                 
+                }
+                
+                numbers.sort((v1, v2) => v1 -v2);        
+                
+                $("#numbers-row td").each((idx, td) => { // jQuery의 each 함수는 js의 forEach와 같은 기능.
+                    $(td).html(numbers[idx]);
+                });
+
+            });         
+
+
+
+       });
+            
+           
+           
+        
+
+        
+       
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 처리</title>
+</head>
+<body>   
+    <table>
+        <tr>
+            <th>원</th>
+            <td>
+                <input type="text" id="krw">
+            </td>
+            <td>
+                <button id="krw-to-usd">원 -> 달러</button>
+                <br>
+                <button id="usd-to-krw">달러 -> 원</button>
+            </td>
+            <th>달러</th>
+            <td>
+                <input type="text" id="usd">
+            </td>
+        </tr>
+    </table>
+    <script>
+        const exchangeRate = 1467;
+        const krw = document.querySelector('#krw');
+        const usd = document.querySelector('#usd');
+
+        const btnKrwToUsd = document.querySelector('#krw-to-usd');
+        const btnUsdToKrw = document.querySelector('#usd-to-krw');
+
+        function krwToUsd(event) {
+            usd.value = krw.value / exchangeRate;
+        }
+        function usdToKrw(event) {
+            krw.value = usd.value * exchangeRate;
+        }
+        
+        btnKrwToUsd.addEventListener('click', krwToUsd);
+        btnUsdToKrw.addEventListener('click', usdToKrw);
+    </script>
+</body>
+</html>

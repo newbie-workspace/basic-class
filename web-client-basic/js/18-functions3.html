@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>함수</title>
+</head>
+<body>
+
+    <script>
+        
+        //1급 객체 : 변수에 저장 가능, 전달인자로 사용할 수 있는 객체. js에서 함수는 1급 객체.
+
+        function f() {
+            
+            alert("함수 f가 호출되었습니다.");
+
+        }
+        
+        f();      
+        const fc = f; // 함수는 변수에 저장. 함수를 참조하는 변수.
+        fc();
+        
+        ///////////////////////////////////////////////////////////////////////////
+
+         function executor(fp) { 
+            
+            fp();
+
+        }
+        
+        executor(f); // 함수는 전달인자로 전달 가능.
+        
+        // 익명 함수 : 전달인자로 전달, 변수에 저장 용도
+
+        const fc2 = function() { alert("익명 함수가 호출되었습니다.");}
+        fc2();
+
+        // 화살표 함수 : 전달인자로 전달, 변수에 저장 용도
+
+        const fc3 = () => alert("화살표 함수가 호출되었습니다");
+        fc3();
+
+        /////////////////////////////////////////////////////////////////////////////
+
+        const ar = [1, 23, 9, 125, 42, 37, 68];
+        
+        alert(ar);
+        ar.sort(); // js 에서 기본 정렬 방식은 데이터를 문자열로 변환해서 정렬
+        alert(ar);
+        
+        // v1 이 크면 양수 반환, v1 이 작으면 음수 반환, 같으면 0 반환.
+        // function compareNumber(v1, v2) {             
+        //     return parseFloat(v1) - parseFloat(v2);
+        // }
+        // ar.sort(compareNumber);
+        // alert(ar);
+
+        // 여러 곳에 사용할 함수가 아닐 때 익명함수 또는 화살표 함수로 간단하게 나타낼 수 있다.
+        //ar.sort(function(v1, v2) {return v1 - v2;});
+        ar.sort((v1, v2) => v1 - v2);
+        alert(ar);
+        
+    </script>
+
+</body>
+</html>

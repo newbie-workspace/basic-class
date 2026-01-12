@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 처리</title>
+    <style>
+        table { margin: 100px auto 0 auto; width: 706px; height: 100px; }
+        td { border: solid 1px; }
+        div { width: 700px; height: 400px; margin: 0 auto; border: solid 1px; }
+        td#red { background-color: red; }
+        td#orange { background-color: orange; }
+        td#yellow { background-color: yellow; }
+        td#green { background-color: green; }
+        td#blue { background-color: blue; }
+        td#navy { background-color: navy; }
+        td#purple { background-color: purple; }
+    </style>
+</head>
+<body>   
+    <table>
+        <tr>
+            <td id="red"></td>
+            <td id="orange"></td>
+            <td id="yellow"></td>
+            <td id="green"></td>
+            <td id="blue"></td>
+            <td id="navy"></td>
+            <td id="purple"></td>
+        </tr>
+    </table>
+    <div id="canvas"></div>
+    <script>
+        // 1. 찾기 : document.querySelector
+        const canvas = document.querySelector('#canvas');
+        const redTd = document.querySelector('#red');
+        const orangeTd = document.querySelector('#orange');
+        const yellowTd = document.querySelector('#yellow');
+        const greenTd = document.querySelector('#green');
+        const blueTd = document.querySelector('#blue');
+        const navyTd = document.querySelector('#navy');
+        const purpleTd = document.querySelector('#purple');
+
+        function changeBgColor(event) { // event 전달인자는 event와 관련된 정보가 저장된 객체
+            const td = event.target; // event.target : event가 발생한 객체
+            canvas.style.backgroundColor = td.id;
+        }
+
+        redTd.addEventListener('click', changeBgColor);
+        orangeTd.addEventListener('click', changeBgColor);
+        yellowTd.addEventListener('click', changeBgColor);
+        greenTd.addEventListener('click', changeBgColor);
+        blueTd.addEventListener('click', changeBgColor);
+        navyTd.addEventListener('click', changeBgColor);
+        purpleTd.addEventListener('click', changeBgColor);
+
+    </script>
+</body>
+</html>

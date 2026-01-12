@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+
+    <h1 style="text-align: center;margin-top:25px">Open API 테스트 페이지</h1>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function() {
+
+            function testA() {
+
+                const url = "http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEgytListInfoInqire"
+                const serviceKey = "R%2BBEwJ49XVmTutdoCAdNq4m7wjOsdFNhVtlzkxWVeZJPhwQqWbGcD7CNeQPipFzIWAanQVw%2FrPLsGkfcYvD4AQ%3D%3D"
+                const q0="서울특별시";
+                const q1="강남구";
+                const numOfRows = 30;
+
+                fetch(`${url}?serviceKey=${serviceKey}&Q0=${q0}&Q1=${q1}&numOfRows=${numOfRows}`)
+                .then(r => r.text())
+                .then(text => {
+                    console.log(text)
+                    const parser = new DOMParser(); // XML string 객체 트리 변환기
+                    const xmlDoc = parser.parseFromString(text, "application/xml"); // 변환 실행
+                    const items = xmlDoc.querySelectorAll('items item');
+                    console.log(typeof items);
+                    console.log(items);
+                    items.forEach( (v, i) => console.log(v.textContent))
+                })
+       
+            }
+            testA();
+
+            function testB() {
+                const url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire"
+                const serviceKey = "R%2BBEwJ49XVmTutdoCAdNq4m7wjOsdFNhVtlzkxWVeZJPhwQqWbGcD7CNeQPipFzIWAanQVw%2FrPLsGkfcYvD4AQ%3D%3D"
+                // const serviceKey = "R+BEwJ49XVmTutdoCAdNq4m7wjOsdFNhVtlzkxWVeZJPhwQqWbGcD7CNeQPipFzIWAanQVw/rPLsGkfcYvD4AQ==";
+                const q0="서울특별시";
+                const q1="강남구";
+                const numOfRows = 30;
+
+                fetch(`${url}?serviceKey=${serviceKey}&Q0=${q0}&Q1=${q1}&numOfRows=${numOfRows}`)
+       
+            }
+            // testB();
+
+
+           
+
+
+
+        });
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 사용</title>
+</head>
+<body>
+
+    <button id="btn1">눌러주세요</button>
+    <button id="btn2">세자리 정수를 뽑아주세요</button>
+    <hr>
+    <input type="text" id="message1">
+    <div id="message2"></div>
+    
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        $(() => {
+            $('#btn1').on("click", (event) => {
+                alert('눌러주셔서 감사합니다.');
+            });
+            
+            $('#btn2').on("click", (event) => {
+                let r = Math.random() * 900 + 100; // 100 ~ 999.xxxx
+                r = Math.floor(r); // 100 ~ 999
+
+                $('#message1').val(r);
+                $('#message2').html(r);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>내용 페이지 연습 2</title>
+
+    <style>
+      #loader {
+        transition: all 0.3s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background: #fff;
+        z-index: 90000;
+      }
+
+      #loader.fadeOut {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: calc(50% - 20px);
+        left: calc(50% - 20px);
+        background-color: #333;
+        border-radius: 100%;
+        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+      }
+
+      @-webkit-keyframes sk-scaleout {
+        0% { -webkit-transform: scale(0) }
+        100% {
+          -webkit-transform: scale(1.0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes sk-scaleout {
+        0% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        } 100% {
+          -webkit-transform: scale(1.0);
+          transform: scale(1.0);
+          opacity: 0;
+        }
+      }
+    </style>
+  <script defer="defer" src="main.js"></script></head>
+  <body class="app">
+    
+    
+    
+
+    
+    
+    <div id="loader">
+      <div class="spinner"></div>
+    </div>
+
+    <script>
+      window.addEventListener('load', function load() {
+        const loader = document.getElementById('loader');
+        setTimeout(function() {
+          loader.classList.add('fadeOut');
+        }, 300);
+      });
+    </script>
+
+    
+    
+    <div>
+      <!-- #Left Sidebar ==================== -->
+      <div class="sidebar">
+        <div class="sidebar-inner">
+          <!-- ### $Sidebar Header ### -->
+          <div class="sidebar-logo">
+            <div class="peers ai-c fxw-nw">
+              <div class="peer peer-greed">
+                <a class="sidebar-link td-n" href="index.html">
+                  <div class="peers ai-c fxw-nw">
+                    <div class="peer">
+                      <div class="logo">
+                        <img src="assets/static/images/logo.svg" alt="">
+                      </div>
+                    </div>
+                    <div class="peer peer-greed">
+                      <h5 class="lh-1 mB-0 logo-text">억만장자</h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="peer">
+                <div class="mobile-toggle sidebar-toggle">
+                  <a href="" class="td-n">
+                    <i class="ti-arrow-circle-left"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ### $Sidebar Menu ### -->
+          <ul class="sidebar-menu scrollable pos-r">
+            <li class="nav-item mT-30">
+              <a class="sidebar-link" href="index.html">
+                <span class="icon-holder">
+                  <i class="c-blue-500 ti-home"></i>
+                </span>
+                <span class="title">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="sidebar-link" href="email.html">
+                <span class="icon-holder">
+                  <i class="c-brown-500 ti-email"></i>
+                </span>
+                <span class="title">Email</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="sidebar-link" href="compose.html">
+                <span class="icon-holder">
+                  <i class="c-blue-500 ti-share"></i>
+                </span>
+                <span class="title">Compose</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="sidebar-link" href="calendar.html">
+                <span class="icon-holder">
+                  <i class="c-deep-orange-500 ti-calendar"></i>
+                </span>
+                <span class="title">Calendar</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="sidebar-link" href="chat.html">
+                <span class="icon-holder">
+                  <i class="c-deep-purple-500 ti-comment-alt"></i>
+                </span>
+                <span class="title">Chat</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="sidebar-link" href="charts.html">
+                <span class="icon-holder">
+                  <i class="c-indigo-500 ti-bar-chart"></i>
+                </span>
+                <span class="title">Charts</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="sidebar-link" href="forms.html">
+                <span class="icon-holder">
+                  <i class="c-light-blue-500 ti-pencil"></i>
+                </span>
+                <span class="title">Forms</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="sidebar-link" href="ui.html">
+                <span class="icon-holder">
+                    <i class="c-pink-500 ti-palette"></i>
+                  </span>
+                <span class="title">UI Elements</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                  <i class="c-orange-500 ti-layout-list-thumb"></i>
+                </span>
+                <span class="title">Tables</span>
+                <span class="arrow">
+                  <i class="ti-angle-right"></i>
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="sidebar-link" href="basic-table.html">Basic Table</a>
+                </li>
+                <li>
+                  <a class="sidebar-link" href="datatable.html">Data Table</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="c-purple-500 ti-map"></i>
+                  </span>
+                <span class="title">Maps</span>
+                <span class="arrow">
+                    <i class="ti-angle-right"></i>
+                  </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="google-maps.html">Google Map</a>
+                </li>
+                <li>
+                  <a href="vector-maps.html">Vector Map</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="c-red-500 ti-files"></i>
+                  </span>
+                <span class="title">Pages</span>
+                <span class="arrow">
+                    <i class="ti-angle-right"></i>
+                  </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="sidebar-link" href="blank.html">Blank</a>
+                </li>                 
+                <li>
+                  <a class="sidebar-link" href="404.html">404</a>
+                </li>
+                <li>
+                  <a class="sidebar-link" href="500.html">500</a>
+                </li>
+                <li>
+                  <a class="sidebar-link" href="signin.html">Sign In</a>
+                </li>
+                <li>
+                  <a class="sidebar-link" href="signup.html">Sign Up</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                  <i class="c-teal-500 ti-view-list-alt"></i>
+                </span>
+                <span class="title">Multiple Levels</span>
+                <span class="arrow">
+                  <i class="ti-angle-right"></i>
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="nav-item dropdown">
+                  <a href="javascript:void(0);">
+                    <span>Menu Item</span>
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="javascript:void(0);">
+                    <span>Menu Item</span>
+                    <span class="arrow">
+                      <i class="ti-angle-right"></i>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="javascript:void(0);">Menu Item</a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);">Menu Item</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #Main ============================ -->
+      <div class="page-container">
+        <!-- ### $Topbar ### -->
+        <div class="header navbar">
+          <div class="header-container">
+            <ul class="nav-left">
+              <li>
+                <a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);">
+                  <i class="ti-menu"></i>
+                </a>
+              </li>
+
+            </ul>
+            
+          </div>
+        </div>
+
+        <!-- ### $App Screen Content ### -->
+        <main class="main-content bgc-grey-100">
+          <div id="mainContent">
+            
+            <div class="container-fluid">
+              <h4 class="c-grey-900 mT-10 mB-30">서울시 구별 대기질 정보</h4>
+                <div class="row">
+                  <div class="col-md-12">
+                  <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                    <select id="gu-selection" class="form-select mT-30 mB-30 w-50 d-inline-block" aria-label="Default select example">
+                      <option value="" selected>자치구를 선택하세요.</option>
+                      <option value="영등포구">영등포구</option>
+                      <option value="강남구">강남구</option>
+                      <option value="강북구">강북구</option>
+                      <option value="강서구">강서구</option>
+                      <option value="종로구">종로구</option>
+                    </select>
+                    <button id="btn-query" type="button" class="btn btn-primary">조회</button>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>                          
+                          <th scope="col">측정시간</th>                          
+                          <th scope="col">미세먼지(PM10)</th>
+                          <th scope="col">오존</th>
+                          <th scope="col">일산화탄소</th>
+                          <th scope="col">아황산가스</th>
+                        </tr>
+                      </thead>
+                      <tbody id="data-row-body">
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="bgc-white p-20 bd">
+                      <h6 class="c-grey-900">Line Chart</h6>
+                      <div class="mT-30">
+                        <canvas id="air-chart" height="220"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+              
+              </div>
+            </div>
+
+          </div>
+        </main>
+
+        <!-- ### $App Screen Footer ### -->
+        <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+          <span>Copyright © 2025 Designed by <a href="https://colorlib.com" target="_blank" rel="nofollow noopener noreferrer" title="Colorlib">Colorlib</a>. All rights reserved.</span>
+        </footer>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script>
+
+      $(function() {
+        let chart = null;
+        function show(stationName) {
+
+          const url = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty";
+          const serviceKey = "R%2BBEwJ49XVmTutdoCAdNq4m7wjOsdFNhVtlzkxWVeZJPhwQqWbGcD7CNeQPipFzIWAanQVw%2FrPLsGkfcYvD4AQ%3D%3D";
+          const returnType = "json";
+          //const stationName = "영등포구";
+          const numOfRows = 100;
+          const dataTerm = "DAILY";
+          fetch(`${url}?serviceKey=${serviceKey}&returnType=${returnType}&stationName=${stationName}&dataTerm=${dataTerm}&numOfRows=${100}`)
+          .then( response => response.json() )
+          .then( json => {
+
+              // console.log(json);
+              // console.log(json.response.body.items);
+              //차트 그리기에 사용할 데이터
+              const datasets = {
+                xTicks: [], // x축 데이터
+                seriesNames: ["PM10", "OZON"],
+                dataArray: [[],[]] // y 축 데이터
+              }
+              const items = json.response.body.items;
+              
+              $('#data-row-body').empty(); // 기존 행(<tr>) 모두 제거
+              $.each( items, (idx, item) => {
+               
+                $('<tr></tr>') // tr  만들기
+                        .append($("<th scope='row'></th>").text(item.dataTime))   // th 만들기 + tr에 추가
+                        .append($("<td></td>").text(item.pm10Value))  // th 만들기 + tr에 추가
+                        .append($("<td></td>").text(item.o3Value))    // th 만들기 + tr에 추가
+                        .append($("<td></td>").text(item.coValue))    // th 만들기 + tr에 추가
+                        .append($("<td></td>").text(item.so2Value))   // th 만들기 + tr에 추가
+                        // .prependTo($('#data-row-body')); 반대 순으로
+                        .appendTo($('#data-row-body')); // tr을 tbody에 추가
+
+                datasets.dataArray[0].push(parseFloat(item.pm10Value));
+                datasets.dataArray[1].push(parseFloat(item.o3Value) * 1000);
+                datasets.xTicks.push(item.dataTime.split('2025-')[1]); // .split('2025-') : ' ' 안에 있는 기준으로 분리 -> 배열로 만듬 ["2025-12-04", "10:33"]
+                      
+              });
+              // end of processing table
+              
+              const lineChartBox = document.querySelector('#air-chart'); // 그래프를 표시할 위치 찾기 div
+
+              if (lineChartBox) {
+                
+                const lineCtx = lineChartBox.getContext('2d'); // 2d 그래픽을 처리할 처리기 가져오기
+                lineChartBox.height = 80;
+
+                if(chart) {
+                  chart.destroy();
+                }  
+                chart = new Chart(lineCtx, { // 2d 그래픽 처리기를 사용해서 차트 그리기
+
+                  type: 'line',
+                  data: {
+                    labels: datasets.xTicks, // x축 데이터
+                    datasets: [{
+                      label                : datasets.seriesNames[0],
+                      backgroundColor      : 'rgba(237, 231, 246, 0.5)',
+                      borderColor          : 'purple',
+                      pointBackgroundColor : 'purple',
+                      borderWidth          : 2,
+                      data                 : datasets.dataArray[0], // y 축 데이터 
+                    }, {
+                      label                : datasets.seriesNames[1],
+                      backgroundColor      : 'rgba(232, 245, 233, 0.5)',
+                      borderColor          : 'blue',
+                      pointBackgroundColor : 'blue',
+                      borderWidth          : 2,
+                      data                 : datasets.dataArray[1], // y 축 데이터 
+                    }],
+                  },
+
+                  options: {
+                    legend: {
+                      display: false,
+                    },
+                  },
+
+                });
+
+              }
+              
+            });
+          
+        }
+
+          $("#btn-query").on("click", () => {
+            const guName = $("#gu-selection").val()
+            if(!guName) { // guName == null or guName == ""
+              alert("자치구를 선택하세요")
+              return;
+            }
+            show(guName);
+          })
+
+      });
+
+    </script>
+  </body>
+</html>

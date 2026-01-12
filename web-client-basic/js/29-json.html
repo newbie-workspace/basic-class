@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+       const person = {
+
+            name: 'wefwef',                               
+            age: 33,                                      
+            email: ['woeifn@vtm.com', 'wefiniwe@gm.com'], 
+            "phone": {                        // javascript object notation            
+                "office": "02-2324-2323",
+                "mobile": "290-2423-2423"
+            },
+            info: function() {
+                return `[${this.name}][${this.email}][${this.phone.office}, ${this.phone.mobile}]`;
+            }
+       }
+
+        document.write(person.info()) //66 ()를 빼먹음...
+
+
+
+        
+        
+    </script>
+</body>
+</html>

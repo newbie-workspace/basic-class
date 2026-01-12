@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" 
+xmlns="http://java.sun.com/xml/ns/j2ee" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>example-web</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- 작성한 클래스를 서블릿 컨테이너에 등록. (이름:HelloServlet) -->
+	<servlet>
+		<servlet-name>HelloServlet</servlet-name>
+		<servlet-class>com.exampleweb.servlet.HelloServlet</servlet-class>
+	</servlet>
+	
+	<!-- 등록된 서블릿 클래스를 요청 경로에 매핑 (이 요청이 들어오면 해당 클래스 실행) -->
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/get-greetings</url-pattern>
+	</servlet-mapping>
+	
+	<!-- <listener>
+		<listener-class>com.exampleweb.listener.ExampleWebListener</listener-class>
+	</listener> -->
+	
+	
+	
+	
+</web-app>

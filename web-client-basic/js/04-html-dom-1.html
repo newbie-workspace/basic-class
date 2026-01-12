@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML DOM</title>
+    <style>
+        h1, div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>행운의 숫자</h1>
+    <div></div>
+    <script>
+        // 숫자 뽑기. (random) -> 변수에 저장.
+        // div 에 뽑힌 숫자를 표시.
+        let number = Math.random() * 1000;
+        number = Math.floor(number); // 소숫점 이하 제거.
+        console.log(number); // 테스트 출력
+        
+        // div 를 찾기.
+        const nArea = document.querySelector("div"); // <div> element 를 찾기 // html이 만들어질 때 브라우저가 구조를 만들어 놓음
+        // div 사용 (변수 div)
+        nArea.innerHTML = number; // innerHTML : <div>innerHTML</div>
+        nArea.style.color = "red";
+        nArea.style.fontSize = "25pt";
+        nArea.style.fontWeight = "bolder";
+        nArea.style.borderColor = "lightblue";
+        nArea.style.borderBlockStyle = "dotted";
+        nArea.style.textDecoration = "underline";
+
+    </script>
+</body>
+</html>

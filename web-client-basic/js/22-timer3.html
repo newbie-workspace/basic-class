@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">    
+    <title>이미지 표시기</title>
+    <style>
+        table { margin: 0 auto; }
+        img { width: 100%; height: 500px; }
+        button { width: 250px; height: 50px; }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2">
+                <img id="img-main">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="btn-start">랜덤 보기</button>
+            </td>
+            <td>
+                <button id="btn-stop">중지</button>
+            </td>
+        </tr>
+    </table>
+    
+    <script>
+        
+        const imgMain = document.querySelector('#img-main');
+        const btnStart = document.querySelector("#btn-start");
+        const btnStop = document.querySelector("#btn-stop");
+
+        // 배열을 만들고 이미지 파일 이름을 배열에 저장.
+        const images = []; 
+        
+        for (let i = 0; i < 10; i++) {
+            
+            images.push(`${i}.jpg`);   // 배열 자체를 바꾸는 것이 아니라 배열의 내용만 변경되므로 const 를 쓸 수 있다.
+
+        }
+
+        function showImage() {
+            
+            const idx = Math.floor( Math.random() * images.length );
+            
+            imgMain.src = `images2/${images[idx]}`;
+
+        }
+
+        function startTimer() {
+            
+            if (imgMain.src == null || imgMain.src == "") { // 아직 img 에 이미지가 지정되지 않았을 때 (첫 번째 호출인 경우)
+            
+                showImage();
+            
+            }
+            
+            timerId = window.setTimeout(function() {
+            
+                showImage();
+            
+                if (true) {
+                    startTimer();
+                }
+            
+            }, 3000);
+
+        }
+
+        let timerId = null;
+        
+        btnStart.addEventListener("click", (event) => {
+            
+            if (timerId != null) { 
+                return; 
+            }
+            
+            startTimer();   
+
+        });
+
+        btnStop.addEventListener("click", (event) => {
+            
+            window.clearTimeout(timerId);
+            
+            timerId = null;
+
+        });
+
+
+        
+
+    </script>
+</body>
+</html>

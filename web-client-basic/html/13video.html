@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>비디오 표시 및 재생</title>
+</head>
+<body>
+    <br><br><br><br><br>
+    <video style="width: 400px" src="video/cat icon.mp4" controls autoplay muted loop></video>
+    <!-- autoplay 는 기본적으로 안됨. video의 경우에는 muted가 되면 autoplay 가능. -->
+    <video style="width: 400px" controls>
+        <source src="video/doesnotexist.mp4" type="">
+        <source src="video/cat icon.mp4" type="">
+        <!-- 가능한 것을 위에서부터 찾아서 플레이함. -->
+    </video>
+    <hr>
+    <!-- iframe: html 페이지 안에 다른 html을 포함할 때 사용하는 요소 -->
+    <iframe width="600" height="450" src="https://www.youtube.com/embed/3jdjZR3X1cE?si=mo8NQCJ_LJBgXFZl" frameborder="0" ></iframe>
+    <video style="width: 400px" src="video/cat icon.mp4" poster="images/800.jpg" controls>
+    </video>
+</body>
+</html>

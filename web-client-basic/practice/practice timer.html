@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="" alt="">
+    </div>
+    <table>
+        <tr>
+            <td><button id="start">시작</button></td>
+            <td><button id="stop">멈춤</button></td>
+        </tr>
+    </table>
+    <script src="../jquery/js/jquery-3.7.1.js"></script>
+<script>
+    let timerId = null;
+
+    $( () => {
+        $("#start").on("click", event => {
+                if(timerId){
+                    return;
+                }
+                timerId = window.setInterval( () => {
+                $("img").attr("src",`../js/images2/${Math.floor(Math.random() * 10)}.jpg`)
+                .css({
+                    "width":"300px"
+                })
+            }, 1500);
+        });
+
+        $("#stop").on("click", event => {
+            window.clearInterval(timerId);
+            timerId = null;
+        });
+    });
+
+</script>
+
+</body>
+</html>

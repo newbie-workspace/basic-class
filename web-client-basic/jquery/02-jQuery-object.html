@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 사용</title>
+</head>
+<body>
+    <script>
+        
+        // HTML 문서에 대한 처리 (필요한 모든 파일 다 다운로드 될 때까지) 가 완료된 후에 발생하는 이벤트
+        // window.addEventListener("load", event => 
+
+        //     {
+        //         //jQuery의 모든 기능은 jQuery 객체에 포함된다.
+        //         const message = jQuery("#message");
+        //         message.html(`<h3>${new Date()}</h3>`);
+                
+        //         //jQuery 객체 대신 $ 사용 가능.
+        //         const message2 = $("#message2");
+        //         message2.html(`<h3>${new Date()}</h3>`);
+        //     }
+            
+        // );
+
+        // DOM 객체 트리가 구조와 기본 내용이 준비된 후 발생하는 이벤트 -> 조금 더 빠름.
+        // document.addEventListener("DOMContentLoaded", event => 
+
+        //     {
+        //         const message = jQuery("#message");
+        //         message.html(`<h3>${new Date()}</h3>`);
+                
+        //         const message2 = $("#message2");
+        //         message2.html(`<h3>${new Date()}</h3>`);
+        //     }
+            
+        // );
+
+        // 위에서 2번째 방법과 비슷한 효과
+        // $(document).ready( () => 
+
+        $( () => 
+        
+            {
+                const message = jQuery("#message");
+                message.html(`<h3>${new Date()}</h3>`);
+                
+                const message2 = $("#message2");
+                message2.html(`<h3>${new Date()}</h3>`);
+            }
+            
+        );
+
+    </script>
+
+    <div id="message"></div>
+    <div id="message2"></div>
+
+    <script src="js/jquery-3.7.1.js"></script>
+
+    
+    
+</body>
+</html>

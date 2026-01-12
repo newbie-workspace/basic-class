@@ -1,0 +1,266 @@
+01. 프로젝트 만들기
+
+    npm create vite@latest todo-app
+
+02. assets 폴더 복사
+
+    제공된 assets 폴더를 복사해서 src 폴더에 붙여넣기
+
+03. 스타일 파일 수정
+
+    index.css 파일의 내용을 제공된 style.css 파일의 내용으로 교체
+
+04. 화면 구현
+
+    제공된 index.html 파일에서 <div class="todo"> ... </div> 영역 복사해서 App.tsx 컴포넌트의 return문 내부에 복사
+
+    내용에서 두 개의 <li className="todo__item todo__item--complete"> 중 두 번째 li 삭제
+
+05. 화면 내용 수정
+
+    - class --> className
+
+    - <!--  -->      {/*  */}
+
+    - checked --> defaultChecked
+
+    - fill-rule --> fillRule
+
+    - clip-rule --> clipRule
+
+06. 폰트 설정
+
+    제공된 index.html 파일의 <head> 영역에 있는 폰트 설정 내용을 index.html의 <head> 영역에 복사
+
+07. 실행 및 확인
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+08. svg 요소 컴포넌트로 분리
+
+    a. components/svg 폴더 생성
+
+    b. SvgPencil.tsx 파일 생성 --> JSX 내용 중 첫 번째 <svg> 내용을 복사해서 SvgPencil.tsx 파일에 적용    
+
+    c. SvgClose.tsx 파일 생성 --> JSX 내용 중 두 번째 <svg> 내용을 복사해서 SvgClose.tsx 파일에 적용
+
+    d. App.tsx 파일의 <svg> 내용을 SvgPencil, SvgClose 컴포넌트로 교체
+
+	    <button className="todo__action-button">
+              <SvgPencil />
+            </button>
+            <button className="todo__action-button">
+              <SvgClose />
+            </button>
+
+09. Button 요소 컴포넌트로 분리
+
+    a. components/html 폴더 생성
+
+    b. Button.tsx 파일 생성 후 다음 코드 작성
+
+type Buttonprops = React.ComponentPropsWithRef<"button">;
+
+export default function Button(props: Buttonprops) {
+  const { children, ...rest } = props;
+  return <button {...rest}>{children}</button>;
+}
+
+    c. App.tsx 파일의 <button> 요소를 위에서 만든 Button 컴포넌트로 교체
+	
+	   <button> --> <Button>, 3곳
+	   
+
+10. 텍스트 입력 요소 컴포넌트로 분리
+
+    a. 09에서 만든 components/html 폴더에 Input.tsx 파일 생성 후 다음 코드 작성
+	
+type Inputprops = Omit<React.ComponentPropsWithRef<"input">, "type"> & {
+  type?: "text";
+};
+
+export default function Input(props: Inputprops) {
+  const { ...rest } = props;
+  return <input {...rest} />;
+}
+
+    b. App.tsx 파일의 <input type="text"> 요소를 위에서 만든 Input 컴포넌트로 교체
+	
+
+11. 체크박스 요소 컴포넌트로 분리
+
+    a. 09에서 만든 components/html 폴더에 CheckBox.tsx 파일 생성 후 아래 코드 작성
+	
+type CheckBoxProps = Omit<React.ComponentPropsWithRef<"input">, "type"> & {
+  type?: "checkbox";
+  parentClassName: string;
+};
+
+export default function CheckBox(props: CheckBoxProps) {
+  const { parentClassName, children, ...rest } = props;
+  return (
+    <div className={parentClassName}>
+      <input {...rest} />
+      <label>{children}</label>
+    </div>
+  );
+}
+
+    b. App.tsx 파일의 <input type="checkbox"> 요소를 위에서 만든 CheckBox 컴포넌트로 교체	
+	
+<CheckBox type="checkbox" parentClassName="todo__checkbox--group" className="todo__checkbox" defaultChecked />
+
+
+
+12. 레이아웃 요소 컴포넌트 분리 1
+
+    a. src/components 폴더에 TodoHeader.tsx 파일 생성
+	
+	b. App.tsx의 JSX에서 해당 영역 복사해서 아래와 같이 TodoHeader.tsx 파일에 적용
+	
+export default function TodoHeader() {
+  return (
+    <>
+      <h1 className="todo__title">Todo List</h1>
+      <p className="todo__subtitle">Please enter your details to continue.</p>
+    </>
+  );
+}
+
+    c. App.tsx 파일의 JSX 영역에 위에서 만든 TodoHeader 컴퍼넌트 적용
+	
+	
+13. 레이아웃 요소 컴포넌트 분리 2
+
+    a. src/components 폴더에 TodoEditor.tsx 파일 생성
+	
+	b. App.tsx의 JSX에서 해당 영역 복사해서 아래와 같이 TodoEditor.tsx 파일에 적용
+	
+import Button from "./html/Button";
+import Input from "./html/Input";
+
+export default function TodoEditor() {
+  return (
+    <form className="todo__form">
+      <div className="todo__editor">
+        <Input
+          type="text"
+          className="todo__input"
+          placeholder="Enter Todo List"
+        />
+        <Button className="todo__button" type="submit">
+          Add
+        </Button>
+      </div>
+    </form>
+  )
+}
+
+    c. App.tsx 파일의 JSX 영역에 위에서 만든 TodoEditor 컴퍼넌트 적용
+	
+
+14. 레이아웃 요소 컴포넌트 분리 3
+
+    a. src/components 폴더에 TodoList.tsx 파일 생성
+	
+	b. App.tsx의 JSX에서 해당 영역 복사해서 아래과 같이 TodoList.tsx 파일에 적용
+	
+import Button from "./html/Button";
+import CheckBox from "./html/CheckBox";
+import SvgClose from "./svg/SvgClose";
+import SvgPencil from "./svg/SvgPencil";
+
+export default function TodoList() {
+  return (
+    <ul className="todo__list">
+      {/* 할 일 목록이 없을 때 */}
+      <li className="todo__item todo__item--empty">
+        <p className="todo__text--empty">There are no registered tasks</p>
+      </li>
+      {/* 할 일 목록이 있을 때 */}
+      {/* 할 일이 완료되면 .todo__item--complete 추가 */}
+      <li className="todo__item todo__item--complete">
+        <div className="todo__checkbox-group">
+          <CheckBox
+            type="checkbox"
+            parentClassName="todo__checkbox--group"
+            className="todo__checkbox"
+            defaultChecked
+          />
+          <label>Eat Breakfast</label>
+        </div>
+        {/* 할 일을 수정할 때만 노출 (.todo__checkbox-group은 비노출) */}
+        {/* <Input type="text" className="todo__modify-input" /> */}
+        <div className="todo__button-group">
+          <Button className="todo__action-button">
+            <SvgPencil />
+          </Button>
+          <Button className="todo__action-button">
+            <SvgClose />
+          </Button>
+        </div>
+      </li>
+    </ul>
+  );
+}
+
+
+    c. App.tsx 파일의 JSX 영역에 위에서 만든 TodoList 컴퍼넌트 적용
+
+
+15. 레이아웃 요소 컴포넌트 분리 4
+
+    a. src/components 폴더에 TodoListEmptyItem.tsx 파일 생성
+	
+	b. TodoList.tsx의 JSX에서 해당 영역 복사해서 아래과 같이 TodoListEmptyItem.tsx 파일에 적용
+	
+export default function TodoListEmptyItem() {
+  return (
+    <li className="todo__item todo__item--empty">
+      <p className="todo__text--empty">There are no registered tasks</p>
+    </li>
+  );
+}
+
+    c. TodoList.tsx 파일의 JSX 영역에 위에서 만든 TodoListEmptyItem 컴퍼넌트 적용
+
+
+16. 레이아웃 요소 컴포넌트 분리 5
+
+    a. src/components 폴더에 TodoListItem.tsx 파일 생성
+	
+	b. TodoList.tsx의 JSX에서 해당 영역 복사해서 아래과 같이 TodoListItem.tsx 파일에 적용
+	
+import Button from "./html/Button";
+import CheckBox from "./html/CheckBox";
+import SvgClose from "./svg/SvgClose";
+import SvgPencil from "./svg/SvgPencil";
+
+export default function TodoListItem() {
+  return (
+    <li className="todo__item todo__item--complete">
+      <div className="todo__checkbox-group">
+        <CheckBox
+          type="checkbox"
+          parentClassName="todo__checkbox--group"
+          className="todo__checkbox"
+          defaultChecked
+        />
+        <label>Eat Breakfast</label>
+      </div>
+      {/* 할 일을 수정할 때만 노출 (.todo__checkbox-group은 비노출) */}
+      {/* <Input type="text" className="todo__modify-input" /> */}
+      <div className="todo__button-group">
+        <Button className="todo__action-button">
+          <SvgPencil />
+        </Button>
+        <Button className="todo__action-button">
+          <SvgClose />
+        </Button>
+      </div>
+    </li>
+
+  )
+}
+
+    c. TodoList.tsx 파일의 JSX 영역에 위에서 만든 TodoListItem 컴퍼넌트 적용

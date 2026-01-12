@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>함수</title>
+</head>
+<body>
+
+    <button id="btn-a">버튼 A</button>
+    <button id="btn-b">버튼 B</button>
+    <button id="btn-c">버튼 C</button>
+    <script>
+        
+        // 1. 
+        function clickHandler(event) {
+    
+            alert("A를 클릭하였음.");
+
+        }
+
+        const btnA = document.querySelector("#btn-a");
+        btnA.addEventListener("click", clickHandler);
+
+        // 2. 
+        const btnB = document.querySelector("#btn-b");
+        btnB.addEventListener("click", function(event) {
+            alert("B를 클릭하였음.")
+        });
+
+        // 3.
+        const btnC = document.querySelector("#btn-c");
+        btnC.addEventListener("click", event => alert("C를 클릭하였음.")); // event => 함수 내용 뒤에 세미콜론 안 들어감.
+
+    </script>
+
+</body>
+</html>

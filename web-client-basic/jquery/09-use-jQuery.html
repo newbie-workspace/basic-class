@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>애니메이션</title>
+</head>
+<body>
+    
+    <button id="btn1">show</button>
+    <button id="btn2">hide</button>
+    <button id="btn3">animate</button>
+    <hr>
+    <div>
+        <img id="nature1" src="images/nature1.jpg" alt="">
+    </div>
+
+    <script src="js/jquery-3.7.1.js"></script>
+
+    <script>
+
+        $( () => {
+
+            // $("#btn1").on("click", event => {
+            //     $("#nature1").fadeIn(3000, () => {})
+            // });
+            // $("#btn2").on("click", event => {
+            //     $("#nature1").fadeOut(3000, () => {})
+            // });
+
+            $("#btn1").on("click", event => {
+                $("#nature1").slideDown(3000, () => {})
+            });
+            
+            $("#btn2").on("click", event => {
+                $("#nature1").slideUp(3000, () => {})
+            });
+
+            $("#btn3").on("click", event => {
+
+                $("#nature1")
+                    .css({
+                        "position":"absolute",
+                        "display":"block", 
+                        "opacity":1,
+                        "width":"0px",  // 66 : "left":0 -> 다시 이미지가 돌아옴. 클릭 빨리하면 (돌아오기 전에), 음....
+                        "rotate":"+=30deg"                                              
+                    })
+                    .animate({
+                        "opacity":0.3,
+                        "width":"600px",   
+                        "top":"+=50",                     
+                        "left":"+=50"
+                    }, 2000);
+
+            })
+     
+        });
+
+    </script>
+    
+</body>
+</html>

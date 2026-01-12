@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn-load-album">앨범목록조회</button>
+    <table id="table-album">
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+        </tr>
+    </table>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        $( () => {
+            $("#btn-load-album").on("click", event => {
+                
+                fetch('')
+                .then(response => response.json())
+                .then(albums =>{
+                    albums.each( (index, album) => {
+                        if (Math.floor(Math.random() * 2) * (index + 1)) {
+                            return;
+                        } else {
+                            $("tr").setAttribute({
+                                "class":"new",
+                                "id":"tr-low"
+                            });
+                            $("#tr-low")
+                            .append($("td").setAttribute("class", "new").text(album.id))
+                            .append($("td").setAttribute("class", "new").text(album.title));
+
+                        }   
+                    });
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

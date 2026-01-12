@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML DOM</title>
+</head>
+<body>
+    <div id="area1">
+        <img src="" alt="">
+    </div>
+    <hr>
+    <div id="area2">
+        <img src="" alt="">
+    </div>
+    <hr>
+    <div id="result">
+        <img src="" alt="">
+    </div>
+    <script>
+
+            // 사용자 입력 (1 or 2 or 3)
+            // 입력 받은 값을 div 밑에 있는 이미지에 이미지 출력
+            // 1: 가위, 2: 바위, 3: 보
+            // 컴퓨터가 랜덤으로 1, 2, 3 중에 하나 선택하게 하고
+            // 그에 따라 이미지 출력
+
+        let inputNum = prompt("1, 2, 3 중 하나를 입력하시오.");
+        inputNum = parseInt(inputNum); // parseInt() -> 문자열을 숫자로 변경해주는 기능.
+            // prompt의 입력의 결과는 항상 문자열
+            // console.log(typeof inputNum); //-> object
+
+        const area1Img = document.querySelector("#area1 img");
+        area1Img.src = "images/" + inputNum + ".jpg";
+        area1Img.style.width = "300px";
+            
+            // if (inputNum == 1) { // java에서는 .equals... javascript 에서는 == 가능
+            //     area1Img.src = "images/1.jpg";
+            // } else if (inputNum == 2) {
+            //     area1Img.src = "images/2.jpg";
+            // } else {
+            //     area1Img.sr1c = "images/3.jpg";
+            // }
+         
+        let comNum = Math.floor(Math.random() * 3 + 1);
+
+            // console.log(typeof comNum);
+
+        const area2Img = document.querySelector("#area2 img");
+
+            //  if (comNum == 1) {
+            //     area2Img.src = "images/1.jpg"
+            //  } else if ( comNum == 2) {
+            //     area2Img.src = "images/2.jpg"
+            //  } else {
+            //     area2Img.src = "images/3.jpg"
+            //  }
+
+        area2Img.src = `images/${comNum}.jpg`;
+        area2Img.style.width = "300px";
+
+            // 승, 무, 패에 다라 이미지 표시
+
+        const resultImg = document.querySelector("#result img");
+
+            // == 을 쓰면 자료형을 구분하지 않고 값만 비교.
+            // === 을 쓰면 자료형, 값 모두 같아야 함.
+            // if (inputNum == comNum) { 
+            //     resultImg.src = "images/draw.png"
+            // } else if ( inputNum - comNum == 1) {
+            //     resultImg.src = "images/win.png"
+            // } else if ( inputNum - comNum == -2) {
+            //     resultImg.src = "images/win.png"
+            // } else {
+            //     resultImg.src = "images/lose.png"
+            // }
+            // 문자열과 숫자 연산 권고하지 않음. 자료형을 일치시켜서 계산
+
+
+        let result;
+
+        if (inputNum == comNum) {
+
+            result = "draw";
+
+        } else if ((inputNum == 1 && comNum == 3) || (inputNum == 2 && comNum == 1) || (inputNum == 3 && comNum == 2)) {
+
+            result = "win";
+
+        } else {
+
+            result = "lose";
+
+        }
+
+        resultImg.src = `images/${result}.png`;
+
+   </script>
+
+</body>
+</html>

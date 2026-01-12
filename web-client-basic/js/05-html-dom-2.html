@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML DOM</title>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        const area = document.querySelector("div");
+        area.style.width = "300px";
+        area.style.height = "300px";
+        area.style.fontWeight = "bolder";
+        area.style.fontSize = "20pt";
+        area.style.margin = "100px auto";
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+       // area.style.backgroundColor = "rgb("    +r+   ","   +g+   ","   +b+   ")"; //문자열 + 데이터 -> 문자열로 인식;
+       area.style.backgroundColor =`rgb(${r},${g},${b})` // ` : backtick, backquote, grave accent
+        area.style.textAlign = "center";
+         area.style.alignContent = "center";
+        area.innerHTML = area.style.backgroundColor;
+    </script>
+</body>
+</html>

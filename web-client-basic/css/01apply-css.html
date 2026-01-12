@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 스타일 적용3 : 별도의 파일에 작성된 스타일을 가져와서 적용 -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 스타일 적용 2 : 페이지에 전역적으로 css 적용 -->
+    <style>
+        h3 {
+            color: blue;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- 태그에 스타일 속성으로 css 적용 -->
+    <h2 style="color:aquamarine;text-decoration: underline;">스타일이 적용된 요소</h2>
+    <h2 style="color:aquamarine;text-decoration: underline;">스타일이 적용된 요소</h2>
+    <h2 style="color:aquamarine;text-decoration: underline;">스타일이 적용된 요소</h2>
+    <!-- 반복하는 것은 좋지 않음. -->
+
+    <h3>스타일이 적용된 요소 2</h3>
+    <h3>스타일이 적용된 요소 2</h3>
+    <!-- 한번에 적용 -->
+     
+    <!-- 외부 파일에서 스타일 가져와서 적용 -->
+    <div> 
+        스타일이 적용된 요소 3 <br>
+        스타일이 적용된 요소 3
+    </div>
+    
+    <!-- 스타일이름: 스타일값;스타일이름: 스타일값; ... -->
+    <!-- 
+    적용대상 {
+            스타일이름: 스타일값;
+            스타일이름: 스타일값;
+            ...
+            } 
+    -->
+    <!-- /* css 영역에서 사용할 수 있는 주석 표현 */ -->
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const key = "ec59c7eff20fc6c81eceb7f69c5a8eb5143ff41a57d70385e30cfdccec13c7a6"
+        const url = "https://api.vworld.kr/req/address?service=address&request=getCoord&version=2.0&format=json&type=road"
+        const address = "관양동 1599-8"
+        fetch(
+            `${url}&key=${key}`
+        ).then(r => r.json())
+        .then(json => {
+            console.log(json)
+        })
+    </script>
+</body>
+</html>

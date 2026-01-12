@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>example-web home</title>
+</head>
+<body>
+
+<h1>Example Web Home</h1>
+	
+	<h2>1. <a href="/example-web/get-greetings">Hello Servlet ( GET 방식 요청, web.xml에 등록 )</a></h2>
+	<h2>2. <a href="/example-web/get-greetings2">Hello Servlet 2 ( GET 방식 요청, annotation 등록 )</a></h2>
+	
+	<h2>3. 폼 데이터 전송 ( GET/POST )</h2>
+	<form action="/example-web/process-data" method="post">
+	<!-- <form action="/example-web/process-data" method="get"> -->
+		Your Name : <input type="text" name="name"><br>
+		Your Email : <input type="text" name="email"><br>
+		<input type="submit" value="전송">
+	</form><br>
+	<form action="/example-web/process-data" method="get">
+		Your Name : <input type="text" name="name"><br>
+		Your Email : <input type="text" name="email"><br>
+		<input type="submit" value="전송">
+	</form>+
+	
+	<!-- 연습용 : 이런 방식으로 jsp를 직접 호출하는 것은 일반적으로 하지 않음.  -->
+	<h2>4. <a href="/example-web/01.hello-java-web.jsp">Hello, JSP</a></h2>
+	<h2>5. <a href="/example-web/02.jsp-structure.jsp">JSP Structure</a></h2>
+	<h2>6. <a href="/example-web/03.jsp-object.jsp">JSP Object</a></h2>
+	<h2>7-1. <a href="/example-web/04.forward.jsp">Forward</a></h2>
+	<h2>7-2. <a href="/example-web/04.redirect.jsp">Redirect</a></hex2>
+	
+	<!-- Servlet 에 요청하기 -->
+	<h2> 8. <a href="/example-web/dogame">가위 바위 보 게임 (모델 2 연습)</a> </h2>
+	<h2> 9. <a href="/example-web/calculate">계산기</a> </h2>
+	<h2>10. <a href="/example-web/07.include.jsp">Include</a></h2>
+	<h2>11. <a href="/example-web/08.property.jsp">Property</a></h2>
+	
+	<h2>12. <a href="/example-web/09.control-statement.jsp">제어문</a></h2>
+	<h2>13. <a href="/example-web/10.state-management.jsp">상태관리</a></h2>
+	<h2>14. <a href="#">이벤트 처리(ExampleWebListener.java파일 참고)</a></h2>
+	<h2>15. <a href="/example-web/11.listener.jsp">이벤트 처리(ExampleWebListener.java파일 참고)</a></h2>
+	<h2>16. 회차별 당첨번호 (JDBC 테스트)</h2>
+		<form action="/example-web/lotto-winning-numbers" method="get">
+			회차번호 : <input type="text" name="round"><br>
+			<input type="submit" value="전송">	
+		</form>
+	<h2>17. <a href="/example-web/14.filelist.jsp">파일업로드</a></h2>
+	<h2>18. <a href="#">필터 (TheFilterA.java, TheFilterB.java 파일 참고)</a></h2>
+	<h2>19. <a href="/example-web/15.ajax.jsp">Ajax</a></h2>
+</body>
+</html>

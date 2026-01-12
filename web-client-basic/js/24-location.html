@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>location objects</title>
+    
+    <style>
+        
+    </style>
+
+</head>
+
+<body>
+
+    <h3>개발자 사이트</h3>
+    
+    <select id="links">
+        <option value="developers.naver.com">네이버</option>
+        <option value="developers.kakao.com">카카오</option>
+        <option value="developers.google.com">구글</option>
+        <option value="developers.microsoft.com">마이크로소프트</option>
+
+    </select>
+
+    <script>
+
+        const links = document.querySelector("#links");
+        
+        links.addEventListener("change", event =>   // change : 대상 객체의 값이 변경될 때 발생하는 이벤트
+
+            {
+                
+                // alert(links.value);        
+                //open(`https://${links.value}`, "_blank"); // 다른 탭에서 열기. 
+                //window.open(`https://${links.value}`, "_blank", "width=800, height=600"); // 새 브라우저 윈도우에 페이지 표시
+                location.href = `https://${links.value}`; // 주소 입력기에 주소를 입력하는 것과 같은 효과. (같은 페이지에서 이동)
+
+            }
+
+        );
+    </script>
+
+</body>
+
+</html>

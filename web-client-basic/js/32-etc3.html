@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <canvas id="container"></canvas> 
+    <!-- canvas 는 그림을 그리는 용도의 태그 -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.js"></script>
+    <script>
+        window.addEventListener("load", function(event) {
+
+        });
+        const xhr = new XMLHttpRequest();
+        const serviceKey ='R%2BBEwJ49XVmTutdoCAdNq4m7wjOsdFNhVtlzkxWVeZJPhwQqWbGcD7CNeQPipFzIWAanQVw%2FrPLsGkfcYvD4AQ%3D%3D'
+        //const serviceKey = '%2Fkj8qorWLEMCG3vQrriu1ninn8fm7gG5Bi4FVy8NrpLuIv72bA2v8CtpD5eflgF01nbhQOpxqfQtVH18OAHWHw%3D%3D'
+        const url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'; /*URL*/
+        let queryParams = '?' + encodeURIComponent('serviceKey') + '=' + serviceKey; /*Service Key*/
+        queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+        queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /**/
+        queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('JSON'); /**/
+        queryParams += '&' + encodeURIComponent('dataCd') + '=' + encodeURIComponent('ASOS'); /**/
+        queryParams += '&' + encodeURIComponent('dateCd') + '=' + encodeURIComponent('DAY'); /**/
+        queryParams += '&' + encodeURIComponent('startDt') + '=' + encodeURIComponent('20251101'); /**/
+        queryParams += '&' + encodeURIComponent('endDt') + '=' + encodeURIComponent('20251120'); /**/
+        queryParams += '&' + encodeURIComponent('stnIds') + '=' + encodeURIComponent('108'); /**/
+        xhr.open('GET', url + queryParams);
+        xhr.onreadystatechange = function () {
+       
+            if (this.readyState == 4) {
+                //alert('Status: ' + this.status + 'nHeaders: ' + JSON.stringify(this.getAllResponseHeaders()) + 'nBody: ' + this.responseText);
+                const result = JSON.parse(this.responseText); // "json string" -> {json object}
+                const items = result.response.body.items.item; //관측 데이터 배열
+                const tm = [];
+                const ta = [];
+                items.forEach( (d) => {
+                    //document.write(`<h3>[${d.tm}][${d.maxTa}][${d.minTa}][${d.avgTa}]</h3>`);
+                    tm.push(d.tm);
+                    ta.push(d.avgTa);
+                });
+                /////////////////////////////////////////////////////////////
+                const data = {
+
+                    labels: tm, // x 축 data
+                    datasets: [{
+                    label: '날씨 데이터 (지우민)',
+                    data: ta, // y 축 data
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+
+                    }]
+                };
+
+                // chart 그리기
+                const canvas = document.querySelector('#container'); // 차트 그릴 장소 
+                new Chart(canvas, { 
+                    type: 'line',
+                    data: data
+                })
+
+            }
+        };
+
+        xhr.send('');        
+    </script>
+</body>
+
+</html>

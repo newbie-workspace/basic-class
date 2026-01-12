@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요소 만들기</title>
+    <style>
+
+        * {
+            
+            text-align: center;
+            
+        }
+
+        table {
+
+            margin: 200px auto;
+            border: solid 1px
+
+        }
+
+        td {
+            
+            width: 70px;
+            height: 70px;
+            color:crimson;
+            font-weight: bolder;
+            font-size: 15pt;
+            border: solid 2px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // 새 html요소 만들기 (여기서는 table)
+            const table = document.createElement('table');
+            
+                const tr1 = document.createElement('tr');
+            
+                    const td = document.createElement('td');
+                    td.setAttribute("colspan", 6);
+                
+                        const button1 = document.createElement('button');
+                        button1.setAttribute('id', 'btn-select-number');
+                        button1.innerHTML = "당첨 예상 번호 뽑기";
+
+                const tr2 = document.createElement('tr');
+                tr2.setAttribute("id", "numbers-row");
+                
+                    for(let i = 0; i < 6; i++) {
+                        const td = document.createElement('td');
+                        tr2.appendChild(td);    
+                    }
+
+            document.body.appendChild(table);
+            table.appendChild(tr1); tr1.appendChild(td); td.appendChild(button1);
+            table.appendChild(tr2);
+
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            
+            const button = document.querySelector("#btn-select-number");
+            const tds = document.querySelectorAll("#numbers-row td");
+            
+            let array = new Array(6);
+
+            function selectNum() {
+            
+                for (let i = 0; i < tds.length; i++) {
+            
+                    array[i] = Math.floor(Math.random() * 45 + 1);
+            
+                    for ( let j = 0; j < i; j++) {
+            
+                        if (array[i] == array[j]) {
+            
+                            i--;
+            
+                            break;
+                        
+                        }
+            
+                    }
+            
+                }
+                
+            }
+        
+            function printNum(event) {
+                
+                selectNum();
+                
+                function compare(a, b) {
+                
+                    return a - b;
+                
+                }
+            
+                array.sort(compare);
+                            
+                for (let i = 0; i < tds.length; i++) {
+                
+                    tds[i].innerHTML = array[i];
+                
+                }
+
+            }
+
+            button.addEventListener("click", printNum);
+        
+        });
+
+    </script>
+</body>
+</html>

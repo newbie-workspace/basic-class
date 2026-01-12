@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto; 
+        }
+        img { 
+            width: 150px; height: 150px; border: solid 1px; 
+        }
+        button { 
+            width: 49%; height: 50px; 
+        }
+        #score {
+            width: 150px;            
+            border: solid 5px blue;
+            border-style: dotted;
+            text-align: center;
+            font-size: 15pt;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><img></td>
+            <td><img></td>
+            <td><img></td>
+            <th id="score" rowspan="4">점수 : 0</th>
+        </tr>
+        <tr>
+            <td><img></td>
+            <td><img></td>
+            <td><img></td>
+        </tr>
+        <tr>
+            <td><img></td>
+            <td><img></td>
+            <td><img></td>
+        </tr>
+        <tr>
+            <th colspan="3">
+                <button id="btn-start">게임 시작</button>
+                <button id="btn-stop">게임 종료</button>
+            </th>
+        </tr>
+    </table>
+
+    <script>
+
+        const images = document.querySelectorAll('img');
+        const divScore = document.querySelector("#score");
+        
+        let score = 0;
+        // for (let i = 0; i < images.length; i++) {
+        //     images[i].src = 'images/hole.jpg';
+        // }
+        // for (let idx in images) { 
+        //     images[idx].src = 'images/hole.jpg';
+        // }
+        // for (let image of images) { // 자바의 enhanced for 문과 동일한 기능.
+        //     image.src = "images/hole.jpg";
+        // }
+        images.forEach((image, idx) =>
+
+            {
+                //images[idx].src = "images/hole.jpg";
+                image.src = "images/hole.jpg";      
+                
+                image.addEventListener("click", event =>
+
+                    {
+        
+                        if (!timerId) { // 게임이 중지 상태라면, timerId == null 과 같음? 
+        
+                            return;
+        
+                        }
+        
+                        const clickedImage = event.target; // 현재 이벤트가 발생한 DOM 객체 (여기서는 이미지)
+        
+                        if (clickedImage.src.indexOf("mole.png") > 0) {
+        
+                            clickedImage.src = "images/dead.png";
+                            score += 1;
+                            divScore.innerHTML = `남은시간 : ${time}<br>점수 : ${score}`;
+        
+                        }
+        
+                    }
+        
+                );
+        
+            }
+        
+        );
+
+        const btnStart = document.querySelector('#btn-start');
+        
+        let timerId = null; let timerId2 = null;
+        
+        let currentPosition = null;
+
+        let time = 10;
+
+        function startTimer() {
+      
+            timerId = setInterval(() => {
+      
+                if (currentPosition != null) {
+      
+                    images[currentPosition].src = 'images/hole.jpg'; // 이전 두더지 이미지 위치의 이미지를 hole.jpg 로 바꿈. // 밑에 줄에서 하는 것으로 대체
+                                                                     // 하였으나 안전장치로 살려둠.            
+                }
+
+                const position = Math.floor( Math.random() * 9 );
+                images[position].src = 'images/mole.png'; // 위에서 뽑은 위치에 두더지 이미지 표시
+                currentPosition = position; // 현재 두더지 이미지의 위치 저장
+
+                setTimeout( () => 
+                    
+                    { 
+
+                        images[currentPosition].src = 'images/hole.jpg';
+                        currentPosition = null;
+                        
+                    }
+
+                , 700);                   
+
+            }, 1000);
+
+            timerId2 = setInterval( () =>
+
+                {
+            
+                    time -= 1;
+                    divScore.innerHTML = `남은시간 : ${time}<br>점수 : ${score}`;
+            
+                    if (time == 0) {
+                        resetGame();
+                    }
+            
+                }
+
+            , 1000)
+
+        }
+        
+        btnStart.addEventListener('click', (event) => 
+        
+            {
+            
+            if (timerId) {
+
+                return;
+
+            }
+
+            startTimer();            
+            
+            }
+
+        );
+
+        const btnStop = document.querySelector('#btn-stop');
+        btnStop.addEventListener('click', (event) => 
+
+            {
+
+                if (timerId) {
+
+                    resetGame();
+                    
+                }        
+
+            }
+
+        );
+
+        function resetGame() {
+            
+            clearInterval(timerId);
+
+            timerId = null;
+
+            clearInterval(timerId2);
+
+            timerId2 = null;
+
+            if (currentPosition != null) {
+
+                images[currentPosition].src = 'images/hole.jpg';
+
+            }
+
+            currentPosition = null; 
+            score = 0;
+            time = 10;
+
+        }
+        
+
+    </script>
+
+</body>
+</html>

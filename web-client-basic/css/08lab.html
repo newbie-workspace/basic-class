@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>연습</title>
+    <style>
+        #loginarea, #images { 
+            width: 700px; 
+            margin: 10px auto; 
+            border: solid 1px; 
+            padding: 10px;
+        }
+        #images table { width : 100%; } /* 1 */
+        th { text-align: left; }        
+        #images tr td:first-child { width: 320px; } /* 2 */
+        td { text-align: center; } /* 3 */
+        img { width: 300px; }
+
+        #images img:hover {
+            border: solid 1px red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loginarea">
+        <form action="#" method="get">
+            <fieldset>
+                <legend>로그인</legend>
+                <table>
+                    <tr>
+                        <th>아이디</th>
+                        <td><input type="text" name="id"></td>
+                    </tr>
+                    <tr>
+                        <th>패스워드</th>
+                        <td><input type="password" name="passwd"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="로그인">
+                        </td>
+                    </tr>
+                </table>                
+            </fieldset>
+        </form>
+    </div>
+    <div id="images">
+        <table>
+            <tr>
+                <td><img src="images/nature1.jpg"></td>
+                <td>설명</td>
+            </tr>
+            <tr>
+                <td><img src="images/nature1.jpg"></td>
+                <td>설명</td>
+            </tr>
+            <tr>
+                <td><img src="images/nature1.jpg"></td>
+                <td>설명</td>
+            </tr>            
+        </table>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>함수</title>
+    </head>
+    <body>
+    
+        <script>
+            
+            function drawBox(width = 20, height = 10) { // 기본값을 넣어줌.
+                
+                document.write("<table>");  
+                
+                    for (let row = 0; row < height; row++) {
+                        
+                        document.write("<tr>");
+                        
+                            for (let col = 0; col < width; col++) {
+                    
+                                if (row == 0 || row == height - 1 || col == 0 || col == width - 1) {
+                        
+                                    document.write("<td>*</td>")
+                        
+                                } else {
+                        
+                                    document.write("<td>&nbsp;</td>")
+                                }
+                            }
+                    
+                        document.write("</tr>");
+                        
+                    }
+        
+                document.write("</table>");
+            } 
+            
+            function inputDigit(message) {
+                
+                let digit = prompt(message); digit = parseInt(digit);
+
+                return digit;
+
+            }
+
+            function exec() {
+
+                let width = inputDigit("박스의 너비"); // "박스의 너비" 를 출력하고 사용자 입력값을 받아서 숫자로 변환하여 return 하라고 호출
+                
+                let height = inputDigit("박스의 높이");
+                
+                drawBox(width, height); // 전달한 width, height 사용
+                
+                drawBox(); //기본 값 20, 10 사용
+
+            }
+
+            exec();
+
+        </script>
+
+    </body>
+</html>

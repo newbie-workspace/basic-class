@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context 
+						https://www.springframework.org/schema/context/spring-context.xsd">
+						
+	<!-- MyServiceConsumer serviceConsumer = new MyServiceConsumer(); -->
+	<bean id="serviceConsumer" class="com.example.spring.ioc.MyServiceConsumer">
+		<!-- serviceConsumer.setMessageService(myMessageService) -->
+		<property name="messageService" ref="myMessageService"></property>
+		<property name="timeService" ref="myTimeService"></property>
+	</bean>
+	
+	<bean id="serviceConsumer2" class="com.example.spring.ioc.MyServiceConsumer2">
+		<property name="messageService" ref="myMessageService"></property>
+		<property name="timeService" ref="myTimeService"></property>
+	</bean>
+	
+	<!-- MyServiceConsumer serviceConsumer = new MyServiceConsumer(myMessageService, myTimeService); -->
+	<bean id="serviceConsumer3" class="com.example.spring.ioc.MyServiceConsumer3">
+		<constructor-arg ref="myMessageService"></constructor-arg>
+		<constructor-arg ref="myTimeService"></constructor-arg>
+	</bean>
+	
+	<bean id="myMessageService" class="com.example.spring.ioc.MyMessageService"
+		  init-method="init" destroy-method="destroy">
+	</bean>
+	
+	<bean id="myTimeService" class="com.example.spring.ioc.MyTimeService">
+	</bean>
+
+</beans>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px;
+        }
+        #game {
+            text-align: center;
+            margin: 0 auto;
+            width: 500px;
+            height: 500px;
+            border: solid 1px;
+        }
+        #menu {
+            width: 200px;
+            height: 50px;            
+            text-align: center;
+        }
+        td {
+            border: solid 2px;
+        }
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="game">
+        <tr>
+            <td><img src="images/hole.jpg" alt=""></td>
+            <td><img src="images/hole.jpg" alt=""></td>
+            <td><img src="images/hole.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="images/hole.jpg" alt=""></td>
+            <td><img src="images/hole.jpg" alt=""></td>
+            <td><img src="images/hole.jpg" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="images/hole.jpg" alt=""></td>
+            <td><img src="images/hole.jpg" alt=""></td>
+            <td><img src="images/hole.jpg" alt=""></td>
+        </tr>
+    </table>
+    <table id="menu">
+        <tr>
+            <td><button id="start">게임시작</button></td>
+            <td><button id="stop">게임종료</button></td>
+        </tr>
+    </table>
+
+    <script>
+        
+        // const imgs = document.querySelectorAll("#game img");
+        // const start = document.querySelector("#start");
+        // const stop = document.querySelector("#stop");
+        // let timerId = null;
+
+        // function randomBug() {
+
+        //     timerId = window.setTimeout( () => 
+                
+        //         {
+                    
+        //             imgs.forEach((img, idx) =>                 
+        //                 {
+        //                     img.src = "images/hole.jpg";
+        //                 }
+        //             )
+                    
+        //             imgs[Math.floor(Math.random() * 9)].src = "images/mole.png";     
+
+        //             if(true) {
+        //                 randomBug();                        
+        //             }
+
+        //         }
+
+        //     , 3000)
+
+        // }
+
+        // start.addEventListener("click", event => randomBug());
+
+        // stop.addEventListener("click", event => 
+        
+        //     {
+        //         window.clearTimeout(timerId);
+        //         imgs.forEach((img, idx) =>                 
+        //             {
+        //                 img.src = "images/hole.jpg";
+        //             }
+        //         )
+        //     }
+
+        // )
+        
+        const imgs = document.querySelectorAll("#game img");
+        const start = document.querySelector("#start");
+        const stop = document.querySelector("#stop");
+        let timerId = null;
+        let currentPosition = null; // <-------------- 66
+        let Position = null;
+
+        function randomBug() {
+
+            if(timerId != null) { // <-------------- 66
+                return;
+            }
+
+            timerId = window.setInterval( () =>  // <-------------- 66
+                
+                {
+                    if(currentPosition != null) {
+                        imgs[currentPosition].src = "images/hole.jpg"
+                    }
+
+                    Position = Math.floor(Math.random() * 9); // <-------------- 66
+                    imgs[Position].src = "images/mole.png";     
+                    currentPosition = Position;  // <-------------- 66
+
+                }
+
+            , 2000)
+
+        }
+
+        start.addEventListener("click", event => randomBug());
+
+        stop.addEventListener("click", event => 
+        
+            {
+                window.clearInterval(timerId);
+                timerId = null; // <--------------
+                imgs[currentPosition].src = "images/hole.jpg" // <-------------- 66
+
+            }
+
+        )
+        
+       for (let img of imgs) {
+
+            img.addEventListener("click", event =>
+
+                {
+                    
+                    console.log(event.target.src) 
+
+                    if(event.target.src.indexOf("images/mole.png") >= 0) { // if (img.src == "images/mole.png") 로 했을 경우, 
+                                                                           // 실제 이미지의 경로는 http://127.0.0.1:5500/js/images/mole.png 이므로
+                        event.target.src = "images/dead.png";              // 인식하지 않는다. 
+                                                                           // 또한 반복문에서 마지막 img에 대해서만 체크함..event.target 이 더 확실하다.
+ 
+                    }
+
+                }
+
+            )  
+    
+       }
+
+
+        // for (let i = 0; i < imgs.length; i++) {
+            
+        //     imgs[i].addEventListener("click", event =>
+            
+        //         {
+                
+        //             if(i == Position){
+                
+        //                 imgs[i].src = "images/dead.png";
+                
+        //             }
+                
+        //         }
+            
+        //     )
+        
+        // }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+
+        const person = {
+            name: "value1",
+            phone: "value2",
+            email: 3456
+        }
+        const {name, phone} = person;
+        document.write(name);
+        function test({name}){
+            document.write(name);
+        }
+        test(person);
+
+        function sum(a,b,...numbers) {
+            let s = 0;
+           numbers.forEach(n => {s += n;}) 
+           return s;
+        }
+        document.write(sum(1, 2, 1, 2, 3, 4, 5));
+        
+
+
+    </script>
+    
+</body>
+</html>

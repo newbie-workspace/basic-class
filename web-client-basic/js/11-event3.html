@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 처리</title>
+    <style>
+        table { margin: 100px auto 0 auto; width: 706px; height: 100px; }
+        td { border: solid 1px; }
+        div { width: 700px; height: 400px; margin: 0 auto; border: solid 1px; }
+        td#red { background-color: red; }
+        td#orange { background-color: orange; }
+        td#yellow { background-color: yellow; }
+        td#green { background-color: green; }
+        td#blue { background-color: blue; }
+        td#navy { background-color: navy; }
+        td#purple { background-color: purple; }
+    </style>
+</head>
+<body>   
+    <table>
+        <tr>
+            <td id="red"></td>
+            <td id="orange"></td>
+            <td id="yellow"></td>
+            <td id="green"></td>
+            <td id="blue"></td>
+            <td id="navy"></td>
+            <td id="purple"></td>
+        </tr>
+    </table>
+    <div id="canvas"></div>
+    <script>
+        // 1. 찾기 : document.querySelector
+        const canvas = document.querySelector('#canvas');
+        const redTd = document.querySelector('#red');
+        const orangeTd = document.querySelector('#orange');
+
+        function toRed(event) {
+            // 2. 사용
+            canvas.style.backgroundColor = 'red';
+        }
+        // 2. 사용
+        redTd.addEventListener('click', toRed);
+
+        function toOrange(event) {
+            // 2. 사용
+            canvas.style.backgroundColor = 'orange';
+        }
+        // 2. 사용
+        orangeTd.addEventListener('click', toOrange);
+
+    </script>
+</body>
+</html>

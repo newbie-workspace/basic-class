@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        * {
+            text-align: center;
+        }
+        
+        img {
+            width: 300px;
+        }
+        
+        table {
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <img src="" alt="">
+    </div>
+
+    <table>
+        <tr>
+            <td><button id="start">랜덤 보기</button></td>
+            <td><button id="stop">중지</button></td>
+        </tr>
+    </table>
+
+    <script>
+
+        // 66 :
+        
+        const img = document.querySelector("div img");
+        const startImg = document.querySelector("#start");
+        const stopImg = document.querySelector("#stop");
+        let timerId = null;
+
+        function randomImg() {
+
+            timerId = window.setTimeout(() => 
+             
+                {
+                    img.src = `images2/${Math.floor(Math.random() * 10)}.jpg`
+                    if(true) {
+                        randomImg();
+                    }
+                } 
+
+            , 1000);
+        
+        }
+
+        startImg.addEventListener("click", event => 
+        
+            {
+            randomImg();
+            }
+        
+        );
+
+        stopImg.addEventListener("click", event => 
+            
+            {
+            window.clearTimeout(timerId);
+            }
+        
+        );
+
+
+
+
+    </script>
+    
+</body>
+</html>

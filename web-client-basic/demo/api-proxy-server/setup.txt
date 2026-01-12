@@ -1,0 +1,27 @@
+1. init project
+
+   npm init -y
+
+2. install express
+
+   npm install express
+
+3. install cors
+
+   npm install cors
+
+4. install http-proxy-middleware
+
+   npm install http-proxy-middleware
+
+5. edit proxy.js
+
+6. run
+
+   node proxy.js
+
+7. use proxy server
+
+   다른 웹 페이지에서 요청 url 조정
+
+   참고 : http://127.0.0.1:3001/api/v1/search/news.json

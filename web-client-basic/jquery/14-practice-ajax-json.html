@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table, tr, td, th {
+            border: solid 1px;
+            
+        }
+        td:nth-child(2) {
+            width: 700px;
+            text-align: left;
+        }
+        th:nth-child(2) {
+            width: 700px;
+            text-align: center;
+            border-color: red;
+        }
+        td:first-child, th:first-child {
+            width: 50px;
+            border-color:crimson;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn-load-album">앨범목록조회</button>
+    <table id="table-album">
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+        </tr>
+    </table>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        window.document.addEventListener("DOMContentLoaded", event => {
+
+            const table = document.querySelector("#table-album")
+            const btnLoadAlbum = document.querySelector("#btn-load-album");
+
+            btnLoadAlbum.addEventListener("click", event => {
+
+                const prevs = document.querySelectorAll(".new");
+                prevs.forEach( n => n.remove())                     // 전에 만들어진 것 삭제.
+                
+                fetch('https://jsonplaceholder.typicode.com/albums')
+                .then(response => response.json())
+                .then(albums => {
+                    
+                    albums.forEach( (album, index) => {
+                        
+                        const a = Math.floor (Math.random() * 2);
+                        if (a * (index + 1) ) {
+                            return;
+                        } else {
+                            const tr = document.createElement('tr');
+                            tr.setAttribute("class","new");
+                            table.appendChild(tr);
+                            const td1 = document.createElement("td");
+                            const td2 = document.createElement("td");
+                            td1.setAttribute("class", "new");
+                            td2.setAttribute("class","new");
+                            tr.appendChild(td1); tr.appendChild(td2);
+                            td1.innerHTML = album.id;
+                            td2.innerHTML = album.title;
+
+                        }
+                    });
+
+                });
+
+            });
+            
+        });
+    </script>
+    
+</body>
+</html>

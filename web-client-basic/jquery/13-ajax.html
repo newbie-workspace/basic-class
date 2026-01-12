@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <style>
+        td:first-child, th:first-child {
+            width:50px; 
+            height:30px;
+        }
+        td:last-child, th:last-child {
+            width:600px;
+            height:30px;
+        }
+        th {
+            text-align: left;
+        }
+        #post {
+            border: solid 1px; 
+            margin-top: 20px;
+            background-color: lightcyan;
+            width: 760px;
+            padding: 10px;
+            min-height: 150px;
+        }
+    </style>
+</head> 
+<body>
+    <button id="btn-load-posts">계시물 목록 보기</button>
+    <hr>
+    <table id="posts">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+        </tr>
+    </table>
+    <div id="post">
+
+    </div>
+    <table id="comments">
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+        </tr>
+    </table>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const tblPosts = document.querySelector("#posts");
+            const divPost = document.querySelector("#post");
+            const tblComments = document.querySelector("#comments");
+            const btnLoadPosts = document.querySelector("#btn-load-posts");
+            btnLoadPosts.addEventListener("click", event => {
+                
+                const rows = document.querySelectorAll('tr.post-row'); // 이미 추가된 데이터 행이 있다면 제거
+                rows.forEach( row => row.remove()); 
+                
+                fetch('https://jsonplaceholder.typicode.com/posts') // fetch : 비동기 요청을 수행하는 함수 -> 응답이 오면 then에 지정한 함수가 호출
+                .then(response => response.json()) // json() : 비동기 응답 일기 -> 완료된 then 에 지정한 함수 호출 (동시에 이루어지는 것이 아님)
+                .then(posts => {
+
+                    posts.forEach((post, idx) => {
+
+                        if(idx >= 5){
+                            return;
+                        }
+                        const tr = document.createElement("tr");
+                        tr.setAttribute("class", "post-row");
+                        const td1 = document.createElement("td");
+                        td1.innerHTML = post.id;
+                        const td2 = document.createElement("td");
+                        //td2.innerHTML= post.title;
+                        const lnk = document.createElement("a");
+                        // lnk.setAttribute('href', `https://jsonplaceholder.typicode.com/posts/${post.id}`); // all refresh 방식, synchronous
+                        lnk.setAttribute('href', 'javascript:'); // 링크를 클릭할 때, 기본 동작 제거
+                        lnk.addEventListener('click', event => {
+                            fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`) 
+                            .then(response => response.json()) 
+                            .then(post => {
+                                    const html = `ID : ${post.id}<br>` + 
+                                                `TITLE : ${post.title}<br>` + 
+                                                `CONTENT : ${post.body}`;
+                                    divPost.innerHTML = html;
+                            });  
+                            const rows = document.querySelectorAll('tr.comment-row'); // 이미 추가된 데이터 행이 있다면 제거
+                            rows.forEach( row => row.remove());
+                            fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`) // 계시글엘 달린 댓글 조회, 표시
+                            .then(response => response.json()) 
+                            .then(comments => {
+                                comments.forEach((comment, idx) => {
+
+                                    const tr = document.createElement("tr");
+                                    tr.setAttribute("class", "comment-row");
+                                    const td1 = document.createElement("td");
+                                    td1.innerHTML = comment.name;
+                                    const td2 = document.createElement("td");
+                                    td2.innerHTML= comment.body;
+                                    tr.appendChild(td1); 
+                                    tr.appendChild(td2);
+                                    tblComments.appendChild(tr);
+
+                            });
+                        });  
+                        
+                    });
+
+                lnk.innerHTML = post.title;
+                td2.appendChild(lnk);
+                tr.appendChild(td1); 
+                tr.appendChild(td2);
+                tblPosts.appendChild(tr);
+                
+                    });
+                    
+                });
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>이벤트 처리</title>
+    </head>
+    
+    <body>
+
+        <button id = "btn1">누르기</button>
+        <button id = "btn2">세자리 정수를 뽑아주세요</button>
+        
+        <hr>
+        
+        <input id = "message1" type="text">
+        
+        <div id = "message2">
+            
+        </div>
+
+        <script>
+
+            function clickHandler(event) {
+                alert("눌렀음");
+            } // 이벤트 처리기를 만들었다.
+        
+            const btn1 = document.querySelector("#btn1");
+             btn1.addEventListener("click", clickHandler) //button 객체의 click 이벤트 처리기 등록
+
+            //////////////////////////////////////////////////
+
+            function clickHandler2(event) {
+                
+                let r = Math.floor(Math.random() * 900 + 100);
+                const message1 = document.querySelector("#message1");
+                const message2 = document.querySelector("#message2");
+
+                message1.value = r; // <input type = "text" value = "값">
+                message2.innerHTML = `${Math.floor(Math.random() * 46 + 1)}`; //<div>innerHTML</div>
+
+                // const v1 = message1.value;     데이터 읽기
+                // const v2 = message2.innerHTML; 데이터 읽기
+
+            }
+
+            const btn2 = document.querySelector("#btn2");
+            btn2.addEventListener("click", clickHandler2)
+
+
+
+
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+   
+    <style>
+        table { margin: 100px auto 0 auto; width: 706px; height: 100px; }
+        td { border: solid 1px; }
+        div { width: 700px; height: 400px; margin: 0 auto; border: solid 1px; }
+        td#red { background-color: red; }
+        td#orange { background-color: orange; }
+        td#yellow { background-color: yellow; }
+        td#green { background-color: green; }
+        td#blue { background-color: blue; }
+        td#navy { background-color: navy; }
+        td#purple { background-color: purple; }
+    
+    </style>
+
+</head>
+
+<body>   
+    
+    <table>
+        <tr>
+            <td id="red"></td>
+            <td id="orange"></td>
+            <td id="yellow"></td>
+            <td id="green"></td>
+            <td id="blue"></td>
+            <td id="navy"></td>
+            <td id="purple"></td>
+        </tr>
+    </table>
+    
+    <div id="canvas"></div>
+
+    <script src="js/jquery-3.7.1.js"></script>
+
+    <script>
+        
+        // $( () =>
+    
+        //     {    // jQuery 의 검색 결과는 집합 객체, 집합 객체에 대한 함수 호출은 포함된 개별 객체에 대해 모두 적용 (자동으로 반복 처리)                
+
+        //         $("td").on("mouseover", event =>    // 모든 <td> 에 대하여 mouseover 이벤트 처리기 등록
+        //             {
+        //                 $("#canvas").css("background-color", event.target.id);        
+        //             }
+        //         )
+
+        //         $("td").on("mouseout", event =>    // 모든 <td> 에 대하여 mouseover 이벤트 처리기 등록
+        //             {
+        //                 $("#canvas").css("background-color", "");        
+        //             }
+        //         )
+
+        //     }
+
+        // )
+
+        $( () =>
+    
+            {                    
+
+                $("td")
+                    .on("mouseover", event =>   
+                        {   
+                            const id = $(event.target).attr("id");  // event.target 은 DOM 객체이지만 jQuery 집합 객체로 만듬.
+                            $("#canvas").css("background-color", id); // jQuery 에서 객체 직접 사용 권고하지 않음. (event.target.id)    
+                        }                                               // => 이유 : crossbrowsing 문제 해결 쉬움.
+                    )
+                    .on("mouseout", event =>    // jQuery 함수의 대부분은 함수 실행 후 원래 객체를 반환합니다. //함수 체이닝
+                        {
+                            $("#canvas").css("background-color", "");        
+                        }
+                    );
+
+            }
+
+        );
+
+    </script>
+    
+</body>
+</html>

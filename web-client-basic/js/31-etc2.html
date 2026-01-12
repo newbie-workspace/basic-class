@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    
+    <script>
+        
+        // function sm(...numbers) {... : rest parameter 갯수를 지정하지 않고도 전달인자 사용 가능 //적어도 2개의 전달인자 필요}
+        function sum(a,b,...numbers) { 
+            
+            if (!a||!b){
+                return "적어도 2개의 전달인자가 필요합니다.";
+            }
+
+            let total = a + b;
+            numbers.forEach( (n, i) => {
+                total += n;
+            });
+            return total;
+        }
+        document.write(`<h3>${sum(10, 20, 30)}</h3>`);
+        document.write(`<h3>${sum(10, 20, 30, 40, 50)}</h3>`);
+        document.write(`<h3>${sum(10, 20, 30, 40, 2323, 23, 2342, 242425, 50)}</h3>`);
+        document.write(`<h3>${sum(10, 20, 30, 40, 50)}</h3>`);
+        document.write(`<h3>${sum(10, 20)}</h3>`);
+        document.write(`<h3>${sum()}</h3>`);
+
+        ///////////////////////////////////////////////////////////
+
+        const ar = [1, 2, 3, 4, 5, 6, 7];
+        document.write(`<h3>${sum(ar)}</h3>`);
+        document.write(`<h3>${sum(...ar)}</h3>`); // spread: ... : 배열을 풀어서 낱개로  
+
+    
+    </script>
+</body>
+</html>
