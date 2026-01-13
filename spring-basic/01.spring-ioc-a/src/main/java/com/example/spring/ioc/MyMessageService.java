@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 public class MyMessageService implements MessageService {
 	
 	int data;
-	public MyMessageService() {
-		data = (int)(Math.random() * 900) + 100;
+	public MyMessageService() { 
+		data = (int)(Math.random() * 900) + 100; 
 	}
 	
 	public String getMessage() {

@@ -6,6 +6,7 @@ AbstractTextEditor.Color.SelectionForeground=230,230,230
 LSP4EReadOccurrenceIndicationColor=74,74,74
 LSP4ETextOccurrenceIndicationColor=90,90,90
 LSP4EWriteOccurrenceIndicationColor=90,90,90
+STS4BootMarkerIndicationColor=56,84,26
 TextOccurrenceIndicationColor=74,74,74
 currentIPIndication=45,45,45
 currentLineColor=45,45,45

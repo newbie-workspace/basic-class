@@ -1,2 +1,6 @@
 1768187850324	Delete resource 'spring-project-template'
 1768204424938	Copy Project '01.spring-ioc-a'
+1768264197243	Copy Project '02.spring-ioc-b'
+1768265817908	Delete resource 'test-project'
+1768266461886	Copy Project '03.spring-ioc-c'
+1768280354909	Delete resource '05.spring-webmvc-a'

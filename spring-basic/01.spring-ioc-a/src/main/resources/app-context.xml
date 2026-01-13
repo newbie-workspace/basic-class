@@ -15,18 +15,26 @@
 		<property name="timeService" ref="myTimeService"></property>
 	</bean>
 	
-	<bean id="serviceConsumer2" class="com.example.spring.ioc.MyServiceConsumer2">
+	<bean id="serviceConsumer2" 
+		  class="com.example.spring.ioc.MyServiceConsumer2"
+		  scope="singleton"
+		  >  
 		<property name="messageService" ref="myMessageService"></property>
 		<property name="timeService" ref="myTimeService"></property>
 	</bean>
 	
 	<!-- MyServiceConsumer serviceConsumer = new MyServiceConsumer(myMessageService, myTimeService); -->
-	<bean id="serviceConsumer3" class="com.example.spring.ioc.MyServiceConsumer3">
+	<bean id="serviceConsumer3" 
+		  class="com.example.spring.ioc.MyServiceConsumer3"
+		  scope="prototype"
+		  >
 		<constructor-arg ref="myMessageService"></constructor-arg>
 		<constructor-arg ref="myTimeService"></constructor-arg>
 	</bean>
 	
-	<bean id="myMessageService" class="com.example.spring.ioc.MyMessageService"
+	<bean id="myMessageService" 
+		  class="com.example.spring.ioc.MyMessageService"
+		  scope="prototype"
 		  init-method="init" destroy-method="destroy">
 	</bean>
 	

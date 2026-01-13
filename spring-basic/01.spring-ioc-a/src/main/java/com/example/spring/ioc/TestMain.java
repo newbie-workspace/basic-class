@@ -15,14 +15,23 @@ public class TestMain {
 		ServiceConsumer consumer = appContext.getBean("serviceConsumer", ServiceConsumer.class);
 		consumer.doSomething();
 		
+		consumer = appContext.getBean("serviceConsumer", ServiceConsumer.class);
+		consumer.doSomething(); //기본 설정 scope="singleton" -> 같은 data
+		
 		System.out.println("-------------------------");
 		
 		ServiceConsumer consumer2 = appContext.getBean("serviceConsumer2", ServiceConsumer.class);
 		consumer2.doSomething();
 		
+		consumer2 = appContext.getBean("serviceConsumer2", ServiceConsumer.class);
+		consumer2.doSomething(); //xml 설정 scope="singleton" -> 같은 data
+		
 		System.out.println("-------------------------");
 		
 		ServiceConsumer consumer3 = appContext.getBean("serviceConsumer3", ServiceConsumer.class);
 		consumer3.doSomething();
+		
+		consumer3 = appContext.getBean("serviceConsumer3", ServiceConsumer.class);
+		consumer3.doSomething(); //xml 설정 scope="prototype"
 	}
 }
