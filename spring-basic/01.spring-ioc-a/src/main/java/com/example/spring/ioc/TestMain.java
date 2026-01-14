@@ -33,5 +33,7 @@ public class TestMain {
 		
 		consumer3 = appContext.getBean("serviceConsumer3", ServiceConsumer.class);
 		consumer3.doSomething(); //xml 설정 scope="prototype"
+		
+		appContext.close();
 	}
 }

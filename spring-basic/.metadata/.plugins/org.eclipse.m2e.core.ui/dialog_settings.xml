@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\JiUmin\basic-class\spring-basic\springdemoweb"/>
+			<item value="D:\JiUmin\basic-class\spring-basic\01.spring-ioc-a"/>
 			<item value="D:\JiUmin\basic-class\spring-basic\05.spring-webmvc-a"/>
 			<item value="D:\JiUmin\basic-class\spring-basic\test-project"/>
 			<item value="D:\JiUmin\new-workspace\spring-basic\01.spring-ioc-a"/>

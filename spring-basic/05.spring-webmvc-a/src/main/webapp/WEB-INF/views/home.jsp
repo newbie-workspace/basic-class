@@ -37,5 +37,22 @@
 	
 	<h3>8. <a href="demo/custom-view">Custom View</a></h3>
 	
+	<h3>9. <a href="#" id="ajax-link">Ajax Request</a></h3>
+	
+	<script>
+	
+	window.addEventListener('load', function(event) {
+
+		document.querySelector('#ajax-link').addEventListener('click', event => {
+			
+			event.preventDefault();
+			fetch("demo/ajax") // 비동기 방식 요청 수행
+			.then(response => response.text())
+			.then(text => alert(text));
+			
+		})
+	})
+	
+	</script>
 </body>
 </html>

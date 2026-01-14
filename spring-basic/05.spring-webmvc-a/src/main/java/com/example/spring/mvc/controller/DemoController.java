@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.View;
 
 import com.example.spring.mvc.dto.PersonDto;
+import com.example.spring.mvc.view.MyView;
 
 @Controller // spring IoC container 에 등록되어 관리됨.
 public class DemoController {
@@ -65,11 +68,34 @@ public class DemoController {
 	// 6. forward
 	@GetMapping(path = {"/demo/forward"})
 	public String forward() {
+		
 		System.out.println("------------> 으로 forward ");
 		return "forward:/resources/forward-result.html"; 
 		// .html, .png, .css 등의 코드의 실행이 필요 없는 것들은  Spring process 를 거치지 않으므로 그런 것들은
 		// /resources/ 에 모아 놓는 것이 일반적. 
 		// servlet-context.xml 에 resources mapping 에서 설정할 수 있음.
+		
+	}
+	
+	// 7. Custom View
+	@GetMapping(path = {"/demo/custom-view"})
+	public View customView(Model model) {
+		
+		model.addAttribute("MBTI", "INFJ");
+		model.addAttribute("bloodtype", "O");
+		
+		MyView view = new MyView();
+		return view; // View 를 반환하면 기존 ViewResolver 를 사용하지 않고 반환한 View 를 사용 
+		
+	}
+	
+	// 8. HTML 이 아닌 데이터 반환 ( plain text ,json, xml, ...)
+	@GetMapping(path = {"/demo/ajax"}, produces = {"text/plain;charset=utf-8"})
+	@ResponseBody // 반환값을 jsp 이름으로 사용하지 말고 그대로 응답으로 처리
+	public String ajax() {
+		 
+		double n = Math.floor(Math.random() * 900);
+		return "오늘의 숫자: " + n; // 오류 발생. 파일이름으로 해석. (InternalResourceViewResolver 때문에.) 
 	}
 	
 }

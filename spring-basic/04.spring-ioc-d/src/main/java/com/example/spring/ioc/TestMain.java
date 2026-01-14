@@ -12,6 +12,6 @@ public class TestMain {
 		
 		ServiceConsumer consumer = appContext.getBean("serviceConsumer", ServiceConsumer.class);
 		consumer.doSomething();
-		
+		appContext.close();
 	}
 }
