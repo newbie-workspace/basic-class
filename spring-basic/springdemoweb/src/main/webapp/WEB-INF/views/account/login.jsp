@@ -24,7 +24,7 @@
 		        
 		        <!-- <form action="/springdemoweb/account/login" method="post"> --> <!-- 브라우저 주소 ? 절대 경로 -->
 		        <form action="login" method="post">
-		       
+		       	<input type="hidden" name="returnUrl" value="${ returnUrl }">
 			        <table>
 			            <tr>
 			                <th>아이디(ID)</th>

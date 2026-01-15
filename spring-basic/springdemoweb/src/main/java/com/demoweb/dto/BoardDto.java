@@ -8,6 +8,12 @@ public class BoardDto {
 	private String writer;
 	private String title;
 	
+	private String content;
+	private Date writeDate;
+	private Date modifyDate;
+	private int readCount;
+	private String category;
+
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -38,11 +44,6 @@ public class BoardDto {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	private String content;
-	private Date writeDate;
-	private Date modifyDate;
-	private int readCount;
-	private String category;
 	
 	public String getWriter() {
 		return writer;

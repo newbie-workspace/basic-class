@@ -38,15 +38,15 @@
 					<th style="width:125px">수정일</th>
 				</tr>
 				
-				<% ArrayList<BoardDto> list = (ArrayList<BoardDto>) request.getAttribute("list"); %>
+				<%-- <% ArrayList<BoardDto> list = (ArrayList<BoardDto>) request.getAttribute("list"); --%>
 				<c:forEach var="row" items="${ list }">
 					<tr>
-						<th style="width:100px">${ row.getBoardNo() }</th>
-						<th style="width:300px">${ row.getTitle() }</th>
-						<th style="width:125px">${ row.getWriter() }</th>
-						<th style="width:50px">${ row.getReadCount() }</th>
-						<th style="width:125px">${ row.getWriteDate() }</th>
-						<th style="width:125px">${ row.getModifyDate() }</th>	
+						<th style="width:100px">${ row.boardNo }</th>
+						<th style="width:300px"><a href="detail?boardNo=${ row.boardNo }">${ row.title }</a></th>
+						<th style="width:125px">${ row.writer }</th>
+						<th style="width:50px">${ row.readCount }</th>
+						<th style="width:125px">${ row.writeDate }</th>
+						<th style="width:125px">${ row.modifyDate }</th>	
 					</tr>
 				</c:forEach>
 				

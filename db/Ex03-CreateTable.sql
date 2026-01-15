@@ -1,4 +1,4 @@
-new_to_do
+
 -- 1. 작업 데이터베이스 변경
 use kamebook;
 

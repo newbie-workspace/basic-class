@@ -22,6 +22,19 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.demoweb.controller"></context:component-scan>
+	<context:component-scan base-package="com.demoweb.dao"></context:component-scan>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/account/login"/>
+			<exclude-mapping path="/account/register"/>
+			<exclude-mapping path="/account/logout"/>
+			<exclude-mapping path="/account/dup-check"/>
+			<beans:bean class="com.demoweb.interceptor.AuthInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
 
 

@@ -1,7 +1,7 @@
 package com.demoweb.controller;
 
-import java.util.ArrayList;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.demoweb.common.Util;
-import com.demoweb.dao.BoardDao;
 import com.demoweb.dao.MemberDao;
-import com.demoweb.dto.BoardDto;
 import com.demoweb.dto.MemberDto;
 
 import jakarta.servlet.http.HttpSession;
@@ -21,8 +19,15 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class AuthController {
 	
+	@Autowired // IoC Container 가 자동으로 MemberDao 호환 타입 객체를 주입. 
+	@Qualifier("memberDao") // memberDao 로 등록된 객체로 한정.
+	private MemberDao dao;
+	
 	@GetMapping(path = {"/account/login"})
-	public String loginView()	{
+	public String loginView(
+				@RequestParam(value="returnUrl", defaultValue="/home") String returnUrl,
+				Model model)	{
+		model.addAttribute("returnUrl", returnUrl);
 		return "account/login";
 	}
 	
@@ -30,28 +35,28 @@ public class AuthController {
 	public String login(
 				@RequestParam("memberId") String memberId,
 				@RequestParam("passwd") String passwd,
+				@RequestParam("returnUrl") String returnUrl,
 				HttpSession session,
 				Model model // Model 타입의 전달인자는 View로 데이터를 전달하는 통로
-		   ) {
+		   )	{
 
 		boolean loginResult = true;
 		passwd = Util.getHashedString(passwd, "SHA-256");
-		MemberDao mDao = new MemberDao();
-		MemberDto member = mDao.checkMember(memberId, passwd);
+		// MemberDao dao = new MySqlMemberDao(); // 의존 객체 주입으로 처리.
+		MemberDto member = dao.checkMember(memberId, passwd);
 
-		if(member != null) {
+		if(member != null)	{
 			
 			session.setAttribute("loginuser", member); // member 객체를 저장...
-		} else {
+		}	else	{
 			
 			loginResult = false;
 		}
 		
 		if(loginResult) {
-			
-			return "redirect:/home";
+				//return "redirect:/home";
+				return "redirect:" + returnUrl;
 		} else {
-		
 			model.addAttribute("loginResult", "loginFail"); // view 에서 읽을 수 있도록 Model 타입 객체에 저장.
 			return "account/login"; // View 로 이동.
 		}
@@ -81,51 +86,31 @@ public class AuthController {
 				MemberDto newMember
 			) {
 		
-		MemberDao registerMember = new MemberDao();
+		// MemberDao memberDao = new MySqlMemberDao(); // 의존 객체 주입으로 처리.
 		String hashedPasswd = Util.getHashedString(newMember.getPasswd(), "SHA-256");
 		newMember.setPasswd(hashedPasswd);
-		registerMember.insertMember(newMember);
+		dao.insertMember(newMember);
 		//return "redirect:/account/login"; // 절대 경로
 		return "redirect:login"; // 상대 경로
 	}
 	
 	// 아이디 중복 검사
 	@GetMapping(path = {"/account/dup-check"}, produces = {"text/plain;charset=utf-8"})
-	@ResponseBody
+	@ResponseBody  // 반환값을 jsp 이름으로 사용하지 말고 그대로 응답으로 처리
 	public String dupCheck(
 			@RequestParam("memberId") String memberId
 			) {
 		
-		MemberDao dao = new MemberDao();
+		// MemberDao dao = new MySqlMemberDao(); // 의존 객체 주입으로 처리.
 		int count = dao.selectMemberCountById(memberId);
-		if (count > 0) {
-			return "invalid";
-		} else {
-			return "valid";
-		}
-	}
-	
-	@GetMapping(path = {"/board/list"})
-	public String boardView(Model model) {
 		
-		BoardDao dao = new BoardDao();
-		ArrayList<BoardDto> list = dao.showBoard();
-		model.addAttribute("list", list);
-		return "board/list";
-	}
-	
-	@GetMapping(path = {"/board/write"})
-	public String boardWriteView() {
+//		if (count > 0) {
+//			return "invalid";
+//		} else {
+//			return "valid";
+//		}
 		
-		return "board/write";
-	}
-	
-	@PostMapping(path = {"/board/write"})
-	public String boardWrite(BoardDto newBoard) {
-		
-		BoardDao dao = new BoardDao();
-		dao.insertBoard(newBoard);
-		return "redirect:list";
+		return count > 0 ? "invalid" : "valid";
 	}
 	
 }
