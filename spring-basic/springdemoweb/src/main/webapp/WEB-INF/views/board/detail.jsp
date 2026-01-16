@@ -81,8 +81,20 @@
 $( () => {
 
 	$("#tolist_button").on("click", (e) => {
-		location.href = "/springdemoweb/board/list";
+		location.href = "/springdemoweb/board/list?pageNo=${ pageNo }";
 	})
+	
+	$("#delete_button").on("click", (e) => {
+
+		const ok = confirm("${board.boardNo}번 글을 삭제할까요?");
+
+		if(!ok){
+			return;
+		}
+		
+    	//location.href = "/springdemoweb/board/delete?boardNo=${board.boardNo}"
+		location.href = "/springdemoweb/board/delete/${board.boardNo}";
+   	})
 
 })
 </script>

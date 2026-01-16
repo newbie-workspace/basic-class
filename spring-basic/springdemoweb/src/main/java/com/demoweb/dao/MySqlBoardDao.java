@@ -79,6 +79,47 @@ public class MySqlBoardDao implements BoardDao {
 	}
 
 	@Override
+	public ArrayList<BoardDto> showBoardByPage(int start, int count) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BoardDto> list = new ArrayList<>();
+		
+		try {
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/labdb", "human", "human");
+			String sql = "select * from tbl_board order by boardno desc limit ?, ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, count);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				BoardDto board = new BoardDto();
+				board.setBoardNo(rs.getInt(1));
+				board.setWriter(rs.getString(2));
+				board.setTitle(rs.getString(3));
+				board.setContent(rs.getString(4));
+				board.setWriteDate(rs.getDate(5));
+				board.setModifyDate(rs.getDate(6));
+				board.setReadCount(rs.getInt(7));
+				board.setCategory(rs.getString(8));
+				list.add(board);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {pstmt.close();} catch (Exception ex) {}
+			try {conn.close();} catch (Exception ex) {}
+		}
+		
+		return list;
+	}
+	@Override
 	public BoardDto selectBoardByBoardNo(int boardNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -141,5 +182,58 @@ public class MySqlBoardDao implements BoardDao {
 			try {pstmt.close();} catch (Exception ex) {}
 			try {conn.close();} catch (Exception ex) {}
 		}
+	}
+
+	@Override
+	public void deleteBoardByNo(int boardNo) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/labdb", "human", "human");
+			
+			String sql = "delete from tbl_board where boardno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {pstmt.close();} catch (Exception ex) {}
+			try {conn.close();} catch (Exception ex) {}
+		}
+	}
+
+	@Override
+	public int selectBoardCount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int dataCount = 0;		
+		try {
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/labdb", "human", "human");
+			String sql = "select count(*) from tbl_board";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				dataCount = rs.getInt(1);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {rs.close();} catch (Exception ex) {}
+			try {pstmt.close();} catch (Exception ex) {}
+			try {conn.close();} catch (Exception ex) {}
+		}
+		
+		return dataCount;
 	}
 }

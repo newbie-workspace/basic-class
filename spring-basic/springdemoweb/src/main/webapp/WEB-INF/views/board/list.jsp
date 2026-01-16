@@ -43,8 +43,8 @@
 					<tr>
 						<th style="width:100px">${ row.boardNo }</th>
 						<th style="width:300px">
-						<a href="detail?boardNo=${ row.boardNo }">${ row.title }</a>
-						<a href="detail/${ row.boardNo }">${ row.title }</a>
+						<a href="detail?boardNo=${ row.boardNo }&pageNo=${ pageNo }">${ row.title }</a>
+						<a href="detail/${ row.boardNo }?pageNo=${ pageNo }">${ row.title }</a>
 						</th>
 						<th style="width:125px">${ row.writer }</th>
 						<th style="width:50px">${ row.readCount }</th>
@@ -71,7 +71,7 @@
 			</table>
 			
 			<br><br>
-									
+			${ pager }						
 			<br /><br /><br /><br />
 		
 		</div>

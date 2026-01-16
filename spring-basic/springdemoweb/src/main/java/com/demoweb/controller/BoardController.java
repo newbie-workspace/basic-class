@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.demoweb.dao.BoardDao;
 import com.demoweb.dao.MySqlBoardDao;
 import com.demoweb.dto.BoardDto;
+import com.demoweb.dto.MemberDto;
+import com.demoweb.ui.ThePager;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -30,16 +32,36 @@ public class BoardController {
 	// private BoardDao boardDao;
 	// 권장 방법.
 	private BoardDao boardDao;
+	
 	public BoardController(BoardDao boardDao, AuthController authController, MySqlBoardDao boardDao_1) { // 생성자의 전달인자는 자동으로 의존 객체 주입.
 		this.boardDao = boardDao; // 생성자의 전달인자는 자동으로 의존 객체 주입.
 		this.authController = authController; // 생성자의 전달인자는 자동으로 의존 객체 주입.
 		this.boardDao_1 = boardDao_1;
 	}
-
+//	// 전체 조회	
+//	@GetMapping(path = {"/board/list"})
+//	public String boardView(
+//			Model model) { // Model 타입 전달인자는 View 로 데이터를 전달하는 도구.
+//		ArrayList<BoardDto> list = boardDao.showBoard();
+//		model.addAttribute("list", list); // 실제로는 request 객체에 저장.
+//		return "board/list";
+//	}
+	
 	@GetMapping(path = {"/board/list"})
-	public String boardView( Model model) { // Model 타입 전달인자는 View 로 데이터를 전달하는 도구.
-		ArrayList<BoardDto> list = boardDao.showBoard();
+	public String boardView(
+			@RequestParam(value="pageNo", defaultValue = "1") int pageNo,
+			Model model) { // Model 타입 전달인자는 View 로 데이터를 전달하는 도구.
+		int pageSize = 3; // 한 페이지에 보여줄 갯수.
+		int pagerSize= 3; // 한번에 표시되는 페이지 번호의 갯수.
+		int start = (pageNo - 1) * pageSize;
+		int dataCount = boardDao.selectBoardCount();
+		// 페이지 번호 이전 다음, 처음, 마지막 등의 링크를 만드는 클래스의 인스턴스 만들기
+		ThePager pager = new ThePager(dataCount, pageNo, pageSize, pagerSize,"list", null);
+		
+		ArrayList<BoardDto> list = boardDao.showBoardByPage(start, pageSize);
 		model.addAttribute("list", list); // 실제로는 request 객체에 저장.
+		model.addAttribute("pager", pager);
+		model.addAttribute("pageNo", pageNo);
 		return "board/list";
 	}
 	
@@ -57,6 +79,7 @@ public class BoardController {
 	@GetMapping(path = {"/board/detail"})
 	public String detail(
 			@RequestParam("boardNo") int boardNo,
+			@RequestParam("pageNo") int pageNo,
 			Model model,
 			HttpSession session
 			) {
@@ -80,6 +103,7 @@ public class BoardController {
 		
 		// view 에서 읽을 수 있도록 데이터 전달. // Model 타입 전달인자에 저장.
 		model.addAttribute("board", board);
+		model.addAttribute("pageNo", pageNo);
 		// view 로 이동.
 		return "board/detail";
 	}
@@ -87,6 +111,7 @@ public class BoardController {
 	@GetMapping(path = {"/board/detail/{boardNo}"}) // {boardNo}: 경로의 일부이면서 데이터
 	public String detail2(
 			@PathVariable("boardNo") int boardNo, // @PathVariable: 경로에 포함된 데이터 읽기
+			@RequestParam("pageNo") int pageNo,
 			Model model,
 			HttpSession session
 			) {
@@ -109,7 +134,25 @@ public class BoardController {
 		session.setAttribute("readlist", readList);
 		// view 에서 읽을 수 있도록 데이터 전달. // Model 타입 전달인자에 저장.
 		model.addAttribute("board", board);
+		model.addAttribute("pageNo", pageNo);
 		// view 로 이동.
 		return "board/detail";
+	}
+	
+	@GetMapping(path = {"/board/delete/{boardNo}"})
+	public String deletePost(
+			HttpSession session,
+			@PathVariable("boardNo") int boardNo			
+			) {
+		
+		BoardDto board = boardDao.selectBoardByBoardNo(boardNo);
+		MemberDto member = (MemberDto)session.getAttribute("loginuser");
+		// 사용자가 delete 주소를 직접 입력할 경우 방지
+		if (member == null || board == null || !member.getMemberId().equals(board.getWriter())) {
+			return "redirect:/board/list";
+		}
+		
+		boardDao.deleteBoardByNo(boardNo);
+		return "redirect:/board/list";
 	}
 }
