@@ -42,7 +42,10 @@
 				<c:forEach var="row" items="${ list }">
 					<tr>
 						<th style="width:100px">${ row.boardNo }</th>
-						<th style="width:300px"><a href="detail?boardNo=${ row.boardNo }">${ row.title }</a></th>
+						<th style="width:300px">
+						<a href="detail?boardNo=${ row.boardNo }">${ row.title }</a>
+						<a href="detail/${ row.boardNo }">${ row.title }</a>
+						</th>
 						<th style="width:125px">${ row.writer }</th>
 						<th style="width:50px">${ row.readCount }</th>
 						<th style="width:125px">${ row.writeDate }</th>

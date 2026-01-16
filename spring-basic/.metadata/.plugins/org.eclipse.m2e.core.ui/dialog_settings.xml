@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\JiUmin\basic-class\spring-basic\spring-practice"/>
 			<item value="D:\JiUmin\basic-class\spring-basic\springdemoweb"/>
 			<item value="D:\JiUmin\basic-class\spring-basic\01.spring-ioc-a"/>
 			<item value="D:\JiUmin\basic-class\spring-basic\05.spring-webmvc-a"/>
@@ -24,6 +25,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\JiUmin\basic-class\spring-basic"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -47,10 +49,13 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.practice.spring_mvc_practice"/>
 		</list>
 		<list key="groupId">
+			<item value="com.practice"/>
 		</list>
 		<list key="artifactId">
+			<item value="spring_mvc_practice"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

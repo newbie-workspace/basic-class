@@ -10,4 +10,8 @@ public interface BoardDao {
 
 	ArrayList<BoardDto> showBoard();
 
+	BoardDto selectBoardByBoardNo(int boardNo);
+
+	void updateBoardReadCount(int boardNo);
+
 }
